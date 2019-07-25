@@ -1,0 +1,8 @@
+parameters:
+    version: '0.1.0'
+
+services:
+    PoP\Comments\Hooks\:
+        resource: '../src/Hooks/*'
+        public: true
+            

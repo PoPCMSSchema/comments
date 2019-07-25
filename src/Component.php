@@ -1,0 +1,36 @@
+<?php
+namespace PoP\Comments;
+
+use PoP\Root\Component\AbstractComponent;
+use PoP\Root\Component\YAMLServicesTrait;
+use PoP\Root\Container\ContainerBuilderUtils;
+
+/**
+ * Initialize component
+ */
+class Component extends AbstractComponent
+{
+    use YAMLServicesTrait;
+
+    /**
+     * Initialize services
+     */
+    public static function init()
+    {
+        parent::init();
+        self::initYAMLServices(dirname(__DIR__));
+    }
+
+    /**
+     * Boot component
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        // Initialize all hooks
+        ContainerBuilderUtils::instantiateNamespaceServices(__NAMESPACE__.'\\Hooks');
+    }
+}
