@@ -13,7 +13,7 @@ class PostHooks
         );
     }
 
-    public function getRESTFields($restFields)
+    public function getRESTFields($restFields): string
     {
         return $restFields.','.self::COMMENT_RESTFIELDS;
     }
