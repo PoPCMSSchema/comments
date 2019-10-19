@@ -1,13 +1,21 @@
 <?php
 namespace PoP\Comments\Hooks\RESTFields;
-use PoP\Hooks\Facades\HooksAPIFacade;
 
-class PostHooks
+use PoP\Hooks\Contracts\HooksAPIInterface;
+use PoP\ComponentModel\Hooks\AbstractHookSet;
+use PoP\Translation\Contracts\TranslationAPIInterface;
+
+class PostHooks extends AbstractHookSet
 {
     const COMMENT_RESTFIELDS = 'comments.id|content';
 
-    public function __construct() {
-        HooksAPIFacade::getInstance()->addFilter(
+    public function __construct(
+        HooksAPIInterface $hooksAPI,
+        TranslationAPIInterface $translationAPI
+    ) {
+        parent::__construct($hooksAPI, $translationAPI);
+
+        $this->hooksAPI->addFilter(
             'Posts:RESTFields',
             [$this, 'getRESTFields']
         );

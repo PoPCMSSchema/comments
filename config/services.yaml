@@ -2,7 +2,11 @@ parameters:
     version: '0.1.0'
 
 services:
+    _defaults:
+        bind:
+            PoP\Hooks\Contracts\HooksAPIInterface: '@hooks_api'
+            PoP\Translation\Contracts\TranslationAPIInterface: '@translation_api'
+
     PoP\Comments\Hooks\:
         resource: '../src/Hooks/*'
         public: true
-            
