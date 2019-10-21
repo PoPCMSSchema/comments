@@ -9,12 +9,8 @@ class PostHooks extends AbstractHookSet
 {
     const COMMENT_RESTFIELDS = 'comments.id|content';
 
-    public function __construct(
-        HooksAPIInterface $hooksAPI,
-        TranslationAPIInterface $translationAPI
-    ) {
-        parent::__construct($hooksAPI, $translationAPI);
-
+    protected function init()
+    {
         $this->hooksAPI->addFilter(
             'Posts:RESTFields',
             [$this, 'getRESTFields']
