@@ -1,9 +1,7 @@
 <?php
 namespace PoP\Comments\Hooks\RESTFields;
 
-use PoP\Hooks\Contracts\HooksAPIInterface;
 use PoP\Engine\Hooks\AbstractHookSet;
-use PoP\Translation\Contracts\TranslationAPIInterface;
 
 class PostHooks extends AbstractHookSet
 {
