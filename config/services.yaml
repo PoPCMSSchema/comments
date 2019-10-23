@@ -4,8 +4,8 @@ parameters:
 services:
     _defaults:
         bind:
-            PoP\Hooks\Contracts\HooksAPIInterface: '@hooks_api'
-            PoP\Translation\Contracts\TranslationAPIInterface: '@translation_api'
+            PoP\Hooks\HooksAPIInterface: '@hooks_api'
+            PoP\Translation\TranslationAPIInterface: '@translation_api'
 
     PoP\Comments\Hooks\:
         resource: '../src/Hooks/*'
