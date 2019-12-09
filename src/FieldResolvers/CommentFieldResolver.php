@@ -9,7 +9,7 @@ use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\Comments\TypeDataResolvers\CommentTypeDataResolver;
 use PoP\Comments\TypeResolvers\CommentTypeResolver;
 use PoP\Posts\TypeDataResolvers\ConvertiblePostTypeDataResolver;
-use PoP\Users\TypeDataResolvers\ConvertibleUserTypeDataResolver;
+use PoP\Users\TypeDataResolvers\UserTypeDataResolver;
 
 class CommentFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -141,7 +141,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
     {
         switch ($fieldName) {
             case 'author':
-                return ConvertibleUserTypeDataResolver::class;
+                return UserTypeDataResolver::class;
 
             case 'post':
             case 'post-id':
