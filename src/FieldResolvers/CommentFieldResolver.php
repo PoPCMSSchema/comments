@@ -8,6 +8,7 @@ use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\Comments\TypeDataResolvers\CommentTypeDataResolver;
 use PoP\Comments\TypeResolvers\CommentTypeResolver;
+use PoP\Posts\TypeDataResolvers\ConvertiblePostTypeDataResolver;
 
 class CommentFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -143,7 +144,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
 
             case 'post':
             case 'post-id':
-                return \PoP\Posts\Dataloader_ConvertiblePostList::class;
+                return ConvertiblePostTypeDataResolver::class;
 
             case 'parent':
                 return CommentTypeDataResolver::class;
