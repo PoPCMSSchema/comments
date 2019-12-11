@@ -20,7 +20,7 @@ class CommentTypeResolver extends AbstractTypeResolver
         return $cmscommentsresolver->getCommentId($comment);
     }
 
-    public function getIdFieldTypeDataResolverClass(): string
+    public function getTypeDataResolverClass(): string
     {
         return CommentTypeDataResolver::class;
     }

@@ -1,7 +1,6 @@
 <?php
 namespace PoP\Comments\TypeDataResolvers;
 
-use PoP\Comments\TypeResolvers\CommentTypeResolver;
 use PoP\ComponentModel\TypeDataResolvers\AbstractTypeQueryableDataResolver;
 
 class CommentTypeDataResolver extends AbstractTypeQueryableDataResolver
@@ -9,11 +8,6 @@ class CommentTypeDataResolver extends AbstractTypeQueryableDataResolver
     public function getDataquery()
     {
         return GD_DATAQUERY_COMMENT;
-    }
-
-    public function getTypeResolverClass(): string
-    {
-        return CommentTypeResolver::class;
     }
 
     public function getFilterDataloadingModule(): ?array

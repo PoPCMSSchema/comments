@@ -6,10 +6,9 @@ use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\LooseContracts\Facades\NameResolverFacade;
-use PoP\Comments\TypeDataResolvers\CommentTypeDataResolver;
 use PoP\Comments\TypeResolvers\CommentTypeResolver;
-use PoP\Posts\TypeDataResolvers\ConvertiblePostTypeDataResolver;
-use PoP\Users\TypeDataResolvers\UserTypeDataResolver;
+use PoP\Posts\TypeResolvers\PostConvertibleTypeResolver;
+use PoP\Users\TypeResolvers\UserTypeResolver;
 
 class CommentFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -137,20 +136,20 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
         return parent::getSchemaFieldArgs($typeResolver, $fieldName);
     }
 
-    public function resolveFieldDefaultTypeDataResolverClass(TypeResolverInterface $typeResolver, string $fieldName, array $fieldArgs = []): ?string
+    public function resolveFieldTypeResolverClass(TypeResolverInterface $typeResolver, string $fieldName, array $fieldArgs = []): ?string
     {
         switch ($fieldName) {
             case 'author':
-                return UserTypeDataResolver::class;
+                return UserTypeResolver::class;
 
             case 'post':
             case 'post-id':
-                return ConvertiblePostTypeDataResolver::class;
+                return PostConvertibleTypeResolver::class;
 
             case 'parent':
-                return CommentTypeDataResolver::class;
+                return CommentTypeResolver::class;
         }
 
-        return parent::resolveFieldDefaultTypeDataResolverClass($typeResolver, $fieldName, $fieldArgs);
+        return parent::resolveFieldTypeResolverClass($typeResolver, $fieldName, $fieldArgs);
     }
 }
