@@ -6,7 +6,7 @@ use PoP\Comments\TypeDataResolvers\CommentTypeDataResolver;
 
 class CommentTypeResolver extends AbstractTypeResolver
 {
-    public const NAME = 'comments';
+    public const NAME = 'Comment';
 
     public function getTypeName(): string
     {
