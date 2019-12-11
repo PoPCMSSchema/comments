@@ -2,7 +2,7 @@
 namespace PoP\Comments\TypeResolvers;
 
 use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
-use PoP\Comments\TypeDataResolvers\CommentTypeDataResolver;
+use PoP\Comments\TypeDataLoaders\CommentTypeDataLoader;
 
 class CommentTypeResolver extends AbstractTypeResolver
 {
@@ -20,9 +20,9 @@ class CommentTypeResolver extends AbstractTypeResolver
         return $cmscommentsresolver->getCommentId($comment);
     }
 
-    public function getTypeDataResolverClass(): string
+    public function getTypeDataLoaderClass(): string
     {
-        return CommentTypeDataResolver::class;
+        return CommentTypeDataLoader::class;
     }
 }
 

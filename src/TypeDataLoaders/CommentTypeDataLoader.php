@@ -1,9 +1,9 @@
 <?php
-namespace PoP\Comments\TypeDataResolvers;
+namespace PoP\Comments\TypeDataLoaders;
 
-use PoP\ComponentModel\TypeDataResolvers\AbstractTypeQueryableDataResolver;
+use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataResolver;
 
-class CommentTypeDataResolver extends AbstractTypeQueryableDataResolver
+class CommentTypeDataLoader extends AbstractTypeQueryableDataResolver
 {
     public function getDataquery()
     {
