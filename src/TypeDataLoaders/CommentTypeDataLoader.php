@@ -15,7 +15,7 @@ class CommentTypeDataLoader extends AbstractTypeQueryableDataResolver
         return [\PoP_Comments_Module_Processor_FieldDataloads::class, \PoP_Comments_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_COMMENTLIST_FIELDS];
     }
 
-    public function resolveObjectsFromIDs(array $ids): array
+    public function getObjects(array $ids): array
     {
         $cmscommentsapi = \PoP\Comments\FunctionAPIFactory::getInstance();
         $query = [
