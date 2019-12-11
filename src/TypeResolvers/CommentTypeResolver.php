@@ -6,11 +6,11 @@ use PoP\Comments\TypeDataResolvers\CommentTypeDataResolver;
 
 class CommentTypeResolver extends AbstractTypeResolver
 {
-    public const TYPE_COLLECTION_NAME = 'comments';
+    public const NAME = 'comments';
 
-    public function getTypeCollectionName(): string
+    public function getTypeName(): string
     {
-        return self::TYPE_COLLECTION_NAME;
+        return self::NAME;
     }
 
     public function getId($resultItem)
