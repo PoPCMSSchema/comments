@@ -1,8 +1,9 @@
 <?php
 namespace PoP\Comments\TypeResolvers;
 
-use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
+use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\Comments\TypeDataLoaders\CommentTypeDataLoader;
+use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
 
 class CommentTypeResolver extends AbstractTypeResolver
 {
@@ -11,6 +12,12 @@ class CommentTypeResolver extends AbstractTypeResolver
     public function getTypeName(): string
     {
         return self::NAME;
+    }
+
+    public function getSchemaTypeDescription(): ?string
+    {
+        $translationAPI = TranslationAPIFacade::getInstance();
+        return $translationAPI->__('Comments added to posts', 'comments');
     }
 
     public function getId($resultItem)
