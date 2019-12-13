@@ -28,7 +28,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-            'comments' => TypeCastingHelpers::combineTypes(SchemaDefinition::TYPE_ARRAY, SchemaDefinition::TYPE_ID),
+            'comments' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
