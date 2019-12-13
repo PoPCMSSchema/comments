@@ -125,10 +125,10 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
                         SchemaDefinition::ARGNAME_NAME => 'format',
                         SchemaDefinition::ARGNAME_TYPE => SchemaDefinition::TYPE_STRING,
                         SchemaDefinition::ARGNAME_DESCRIPTION => sprintf(
-                            $translationAPI->__('Date format, as defined in %s. By default it is \'%s\'', 'pop-comments'),
-                            'https://www.php.net/manual/en/function.date.php',
-                            $cmsengineapi->getOption(NameResolverFacade::getInstance()->getName('popcms:option:dateFormat'))
+                            $translationAPI->__('Date format, as defined in %s', 'pop-comments'),
+                            'https://www.php.net/manual/en/function.date.php'
                         ),
+                        SchemaDefinition::ARGNAME_DEFAULT_VALUE => $cmsengineapi->getOption(NameResolverFacade::getInstance()->getName('popcms:option:dateFormat')),
                     ],
                 ];
         }
