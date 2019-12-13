@@ -37,7 +37,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'comments' => $translationAPI->__('IDs of all the comments added to the post', 'pop-comments'),
+            'comments' => $translationAPI->__('All comments added to the post', 'pop-comments'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }

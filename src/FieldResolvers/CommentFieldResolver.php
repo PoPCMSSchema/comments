@@ -60,12 +60,12 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'author-name' => $translationAPI->__('Comment author\'s name', 'pop-comments'),
             'author-url' => $translationAPI->__('Comment author\'s URL', 'pop-comments'),
             'author-email' => $translationAPI->__('Comment author\'s email', 'pop-comments'),
-            'author' => $translationAPI->__('ID of the comment\'s author', 'pop-comments'),
-            'post' => $translationAPI->__('ID of the post to which the comment was added', 'pop-comments'),
-            'post-id' => $translationAPI->__('ID of the post to which the comment was added', 'pop-comments'),
+            'author' => $translationAPI->__('Comment\'s author', 'pop-comments'),
+            'post' => $translationAPI->__('Post to which the comment was added', 'pop-comments'),
+            'post-id' => $translationAPI->__('Post to which the comment was added', 'pop-comments'),
             'approved' => $translationAPI->__('Is the comment approved?', 'pop-comments'),
             'type' => $translationAPI->__('Type of comment', 'pop-comments'),
-            'parent' => $translationAPI->__('ID of the parent comment (if this comment is a response to another one)', 'pop-comments'),
+            'parent' => $translationAPI->__('Parent comment (if this comment is a response to another one)', 'pop-comments'),
             'date' => $translationAPI->__('Date when the comment was added', 'pop-comments'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
