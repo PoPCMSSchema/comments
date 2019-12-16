@@ -143,7 +143,6 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
                 return UserTypeResolver::class;
 
             case 'post':
-            case 'post-id':
                 return PostConvertibleTypeResolver::class;
 
             case 'parent':
