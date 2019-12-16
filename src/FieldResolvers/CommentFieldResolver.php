@@ -7,7 +7,7 @@ use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\Comments\TypeResolvers\CommentTypeResolver;
-use PoP\Posts\TypeResolvers\PostConvertibleTypeResolver;
+use PoP\Posts\TypeResolvers\PostUnionTypeResolver;
 use PoP\Users\TypeResolvers\UserTypeResolver;
 
 class CommentFieldResolver extends AbstractDBDataFieldResolver
@@ -143,7 +143,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
                 return UserTypeResolver::class;
 
             case 'post':
-                return PostConvertibleTypeResolver::class;
+                return PostUnionTypeResolver::class;
 
             case 'parent':
                 return CommentTypeResolver::class;
