@@ -1,0 +1,16 @@
+<?php
+namespace PoP\Comments\TypeAPIs;
+
+/**
+ * Methods to interact with the Type, to be implemented by the underlying CMS
+ */
+interface CommentTypeAPIInterface
+{
+    /**
+     * Indicates if the passed object is of type Comment
+     *
+     * @param [type] $object
+     * @return boolean
+     */
+    public function isInstanceOfCommentType($object): bool;
+}
