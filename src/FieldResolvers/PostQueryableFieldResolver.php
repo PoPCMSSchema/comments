@@ -60,7 +60,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
                 $query = array(
                     'status' => POP_COMMENTSTATUS_APPROVED,
                     // 'type' => 'comment', // Only comments, no trackbacks or pingbacks
-                    'post-id' => $typeResolver->getId($post),
+                    'post-id' => $typeResolver->getID($post),
                     // The Order must always be date > ASC so the jQuery works in inserting sub-comments in already-created parent comments
                     'order' =>  'ASC',
                     'orderby' => NameResolverFacade::getInstance()->getName('popcms:dbcolumn:orderby:comments:date'),

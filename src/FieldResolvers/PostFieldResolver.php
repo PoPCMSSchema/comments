@@ -60,7 +60,7 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
                 return $typeResolver->resolveValue($post, 'url', $variables, $expressions, $options);
 
             case 'comments-count':
-                return $cmscommentsapi->getCommentsNumber($typeResolver->getId($post));
+                return $cmscommentsapi->getCommentsNumber($typeResolver->getID($post));
 
             case 'has-comments':
                 return $typeResolver->resolveValue($post, 'comments-count', $variables, $expressions, $options) > 0;
