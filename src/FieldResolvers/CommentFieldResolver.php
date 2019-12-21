@@ -7,7 +7,7 @@ use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\Comments\TypeResolvers\CommentTypeResolver;
-use PoP\Posts\TypeResolvers\ContentEntityUnionTypeResolver;
+use PoP\Content\TypeResolvers\ContentEntityUnionTypeResolver;
 use PoP\Users\TypeResolvers\UserTypeResolver;
 
 class CommentFieldResolver extends AbstractDBDataFieldResolver
