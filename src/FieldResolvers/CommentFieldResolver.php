@@ -1,14 +1,15 @@
 <?php
 namespace PoP\Comments\FieldResolvers;
 
-use PoP\Translation\Facades\TranslationAPIFacade;
+use PoP\Users\TypeResolvers\UserTypeResolver;
 use PoP\ComponentModel\Schema\SchemaDefinition;
-use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
-use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
+use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\Comments\TypeResolvers\CommentTypeResolver;
+use PoP\ComponentModel\TypeResolvers\UnionTypeHelpers;
+use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\Content\TypeResolvers\ContentEntityUnionTypeResolver;
-use PoP\Users\TypeResolvers\UserTypeResolver;
+use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 
 class CommentFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -143,7 +144,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
                 return UserTypeResolver::class;
 
             case 'post':
-                return ContentEntityUnionTypeResolver::class;
+                return UnionTypeHelpers::getUnionOrTargetTypeResolverClass(ContentEntityUnionTypeResolver::class);
 
             case 'parent':
                 return CommentTypeResolver::class;
