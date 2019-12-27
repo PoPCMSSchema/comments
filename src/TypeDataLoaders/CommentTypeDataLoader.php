@@ -2,17 +2,13 @@
 namespace PoP\Comments\TypeDataLoaders;
 
 use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
+use PoP\Comments\ModuleProcessors\CommentRelationalFieldDataloadModuleProcessor;
 
 class CommentTypeDataLoader extends AbstractTypeQueryableDataLoader
 {
-    public function getDataquery()
-    {
-        return GD_DATAQUERY_COMMENT;
-    }
-
     public function getFilterDataloadingModule(): ?array
     {
-        return [\PoP_Comments_Module_Processor_FieldDataloads::class, \PoP_Comments_Module_Processor_FieldDataloads::MODULE_DATALOAD_DATAQUERY_COMMENTLIST_FIELDS];
+        return [CommentRelationalFieldDataloadModuleProcessor::class, CommentRelationalFieldDataloadModuleProcessor::MODULE_DATALOAD_RELATIONALFIELDS_COMMENTS];
     }
 
     public function getObjects(array $ids): array
