@@ -44,7 +44,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'author-email' => SchemaDefinition::TYPE_EMAIL,
             'author' => SchemaDefinition::TYPE_ID,
             'post' => SchemaDefinition::TYPE_ID,
-            'post-id' => SchemaDefinition::TYPE_ID,
+            'post-id' => SchemaDefinition::TYPE_MIXED, // The ID may be an Int or a String, so set it as Mixed
             'approved' => SchemaDefinition::TYPE_BOOL,
             'type' => SchemaDefinition::TYPE_STRING,
             'parent' => SchemaDefinition::TYPE_ID,
