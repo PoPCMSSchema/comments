@@ -22,12 +22,12 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
     {
         return [
             'content',
-            'author-name',
-            'author-url',
-            'author-email',
+            'authorName',
+            'authorURL',
+            'authorEmail',
             'author',
             'post',
-            'post-id',
+            'postID',
             'approved',
             'type',
             'parent',
@@ -39,12 +39,12 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
     {
         $types = [
 			'content' => SchemaDefinition::TYPE_STRING,
-            'author-name' => SchemaDefinition::TYPE_STRING,
-            'author-url' => SchemaDefinition::TYPE_URL,
-            'author-email' => SchemaDefinition::TYPE_EMAIL,
+            'authorName' => SchemaDefinition::TYPE_STRING,
+            'authorURL' => SchemaDefinition::TYPE_URL,
+            'authorEmail' => SchemaDefinition::TYPE_EMAIL,
             'author' => SchemaDefinition::TYPE_ID,
             'post' => SchemaDefinition::TYPE_ID,
-            'post-id' => SchemaDefinition::TYPE_ID,//SchemaDefinition::TYPE_UNRESOLVED_ID,
+            'postID' => SchemaDefinition::TYPE_ID,//SchemaDefinition::TYPE_UNRESOLVED_ID,
             'approved' => SchemaDefinition::TYPE_BOOL,
             'type' => SchemaDefinition::TYPE_STRING,
             'parent' => SchemaDefinition::TYPE_ID,
@@ -58,12 +58,12 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
 			'content' => $translationAPI->__('Comment\'s content', 'pop-comments'),
-            'author-name' => $translationAPI->__('Comment author\'s name', 'pop-comments'),
-            'author-url' => $translationAPI->__('Comment author\'s URL', 'pop-comments'),
-            'author-email' => $translationAPI->__('Comment author\'s email', 'pop-comments'),
+            'authorName' => $translationAPI->__('Comment author\'s name', 'pop-comments'),
+            'authorURL' => $translationAPI->__('Comment author\'s URL', 'pop-comments'),
+            'authorEmail' => $translationAPI->__('Comment author\'s email', 'pop-comments'),
             'author' => $translationAPI->__('Comment\'s author', 'pop-comments'),
             'post' => $translationAPI->__('Post to which the comment was added', 'pop-comments'),
-            'post-id' => $translationAPI->__('Post to which the comment was added', 'pop-comments'),
+            'postID' => $translationAPI->__('Post to which the comment was added', 'pop-comments'),
             'approved' => $translationAPI->__('Is the comment approved?', 'pop-comments'),
             'type' => $translationAPI->__('Type of comment', 'pop-comments'),
             'parent' => $translationAPI->__('Parent comment (if this comment is a response to another one)', 'pop-comments'),
@@ -82,20 +82,20 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             case 'content':
                 return $cmscommentsresolver->getCommentContent($comment);
 
-            case 'author-name':
+            case 'authorName':
                 return $cmsusersapi->getUserDisplayName($cmscommentsresolver->getCommentUserId($comment));
 
-            case 'author-url':
+            case 'authorURL':
                 return $cmsusersapi->getUserURL($cmscommentsresolver->getCommentUserId($comment));
 
-            case 'author-email':
+            case 'authorEmail':
                 return $cmsusersapi->getUserEmail($cmscommentsresolver->getCommentUserId($comment));
 
             case 'author':
                 return $cmscommentsresolver->getCommentUserId($comment);
 
             case 'post':
-            case 'post-id':
+            case 'postID':
                 return $cmscommentsresolver->getCommentPostId($comment);
 
             case 'approved':
