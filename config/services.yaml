@@ -14,3 +14,7 @@ services:
     PoP\Comments\FieldResolvers\:
         resource: '../src/FieldResolvers/*'
         public: true
+
+    PoP\Comments\TypeResolvers\:
+        resource: '../src/TypeResolvers/*'
+        public: true
