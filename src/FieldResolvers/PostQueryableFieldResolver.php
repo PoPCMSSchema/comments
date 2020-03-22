@@ -45,11 +45,15 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
 
     public function getSchemaFieldArgs(TypeResolverInterface $typeResolver, string $fieldName): array
     {
+        $schemaFieldArgs = parent::getSchemaFieldArgs($typeResolver, $fieldName);
         switch ($fieldName) {
             case 'comments':
-                return $this->getFieldArgumentsSchemaDefinitions($typeResolver, $fieldName);
+                return array_merge(
+                    $schemaFieldArgs,
+                    $this->getFieldArgumentsSchemaDefinitions($typeResolver, $fieldName)
+                );
         }
-        return parent::getSchemaFieldArgs($typeResolver, $fieldName);
+        return $schemaFieldArgs;
     }
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
