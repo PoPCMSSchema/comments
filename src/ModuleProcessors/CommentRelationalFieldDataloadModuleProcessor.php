@@ -3,7 +3,7 @@ namespace PoP\Comments\ModuleProcessors;
 
 use PoP\Comments\TypeResolvers\CommentTypeResolver;
 use PoP\Comments\ModuleProcessors\CommentFilterInnerModuleProcessor;
-use PoP\Engine\ModuleProcessors\AbstractRelationalFieldDataloadModuleProcessor;
+use PoP\API\ModuleProcessors\AbstractRelationalFieldDataloadModuleProcessor;
 use PoP\ComponentModel\QueryInputOutputHandlers\ListQueryInputOutputHandler;
 
 class CommentRelationalFieldDataloadModuleProcessor extends AbstractRelationalFieldDataloadModuleProcessor
