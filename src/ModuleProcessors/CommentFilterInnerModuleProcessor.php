@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace PoP\Comments\ModuleProcessors;
 
 use PoP\Hooks\Facades\HooksAPIFacade;
