@@ -38,7 +38,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-			'content' => SchemaDefinition::TYPE_STRING,
+            'content' => SchemaDefinition::TYPE_STRING,
             'authorName' => SchemaDefinition::TYPE_STRING,
             'authorURL' => SchemaDefinition::TYPE_URL,
             'authorEmail' => SchemaDefinition::TYPE_EMAIL,
@@ -57,7 +57,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'content' => $translationAPI->__('Comment\'s content', 'pop-comments'),
+            'content' => $translationAPI->__('Comment\'s content', 'pop-comments'),
             'authorName' => $translationAPI->__('Comment author\'s name', 'pop-comments'),
             'authorURL' => $translationAPI->__('Comment author\'s URL', 'pop-comments'),
             'authorEmail' => $translationAPI->__('Comment author\'s email', 'pop-comments'),

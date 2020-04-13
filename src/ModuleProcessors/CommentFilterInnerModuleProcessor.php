@@ -43,6 +43,3 @@ class CommentFilterInnerModuleProcessor extends AbstractModuleProcessor
         return $ret;
     }
 }
-
-
-

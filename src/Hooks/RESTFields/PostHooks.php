@@ -17,6 +17,6 @@ class PostHooks extends AbstractHookSet
 
     public function getRESTFields($restFields): string
     {
-        return $restFields.','.self::COMMENT_RESTFIELDS;
+        return $restFields . ',' . self::COMMENT_RESTFIELDS;
     }
 }

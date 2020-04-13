@@ -30,7 +30,7 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-			'commentsURL' => SchemaDefinition::TYPE_URL,
+            'commentsURL' => SchemaDefinition::TYPE_URL,
             'commentsCount' => SchemaDefinition::TYPE_INT,
             'hasComments' => SchemaDefinition::TYPE_BOOL,
             'publishedWithComments' => SchemaDefinition::TYPE_BOOL,
@@ -42,7 +42,7 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-			'commentsURL' => $translationAPI->__('URL of the comments section in the post page', 'pop-comments'),
+            'commentsURL' => $translationAPI->__('URL of the comments section in the post page', 'pop-comments'),
             'commentsCount' => $translationAPI->__('Number of comments added to the post', 'pop-comments'),
             'hasComments' => $translationAPI->__('Does the post have comments?', 'pop-comments'),
             'publishedWithComments' => $translationAPI->__('Is the post published and does it have comments?', 'pop-comments'),

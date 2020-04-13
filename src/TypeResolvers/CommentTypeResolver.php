@@ -32,4 +32,3 @@ class CommentTypeResolver extends AbstractTypeResolver
         return CommentTypeDataLoader::class;
     }
 }
-

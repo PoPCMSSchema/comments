@@ -47,6 +47,3 @@ class CommentRelationalFieldDataloadModuleProcessor extends AbstractRelationalFi
         return parent::getFilterSubmodule($module);
     }
 }
-
-
-
