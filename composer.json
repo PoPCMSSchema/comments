@@ -19,8 +19,8 @@
     "prefer-stable": true,
     "require": {
         "php" : "~7.1",
-        "getpop/posts": "^1.0@dev",
-        "getpop/migrate-comments": "^1.0@dev"
+        "getpop/posts": "~0.1",
+        "getpop/migrate-comments": "~0.1"
     },
     "require-dev": {
         "phpunit/phpunit" : ">=7.0",
