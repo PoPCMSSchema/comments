@@ -1,2 +1,2 @@
 <?php
-\PoP\Comments\Component::init();
+//\PoP\Comments\Component::initialize();
