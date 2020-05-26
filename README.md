@@ -25,7 +25,9 @@ composer require getpop/comments
 Initialize the component:
 
 ``` php
-\PoP\Comments\Component::initialize();
+\PoP\Root\ComponentLoader::initializeComponents([
+    \PoP\Comments\Component::class,
+]);
 ```
 
 ## Standards
