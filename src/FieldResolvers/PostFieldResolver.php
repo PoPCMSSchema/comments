@@ -10,6 +10,7 @@ use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\Facades\Schema\FieldQueryInterpreterFacade;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\Content\FieldInterfaces\ContentEntityFieldInterfaceResolver;
+use PoP\Content\Types\Status;
 
 class PostFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -68,7 +69,7 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
                 return $typeResolver->resolveValue($post, 'commentsCount', $variables, $expressions, $options) > 0;
 
             case 'publishedWithComments':
-                return $typeResolver->resolveValue($post, FieldQueryInterpreterFacade::getInstance()->getField('isStatus', ['status' => POP_POSTSTATUS_PUBLISHED]), $variables, $expressions, $options) && $typeResolver->resolveValue($post, 'hasComments', $variables, $expressions, $options);
+                return $typeResolver->resolveValue($post, FieldQueryInterpreterFacade::getInstance()->getField('isStatus', ['status' => Status::PUBLISHED]), $variables, $expressions, $options) && $typeResolver->resolveValue($post, 'hasComments', $variables, $expressions, $options);
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);
