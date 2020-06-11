@@ -27,7 +27,6 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
             'commentsURL',
             'commentsCount',
             'hasComments',
-            'publishedWithComments',
         ];
     }
 
@@ -37,7 +36,6 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
             'commentsURL' => SchemaDefinition::TYPE_URL,
             'commentsCount' => SchemaDefinition::TYPE_INT,
             'hasComments' => SchemaDefinition::TYPE_BOOL,
-            'publishedWithComments' => SchemaDefinition::TYPE_BOOL,
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
     }
@@ -47,7 +45,6 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
         switch ($fieldName) {
             case 'commentsCount':
             case 'hasComments':
-            case 'publishedWithComments':
                 return true;
         }
         return parent::isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
@@ -60,7 +57,6 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
             'commentsURL' => $translationAPI->__('URL of the comments section in the post page', 'pop-comments'),
             'commentsCount' => $translationAPI->__('Number of comments added to the post', 'pop-comments'),
             'hasComments' => $translationAPI->__('Does the post have comments?', 'pop-comments'),
-            'publishedWithComments' => $translationAPI->__('Is the post published and does it have comments?', 'pop-comments'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -78,9 +74,6 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
 
             case 'hasComments':
                 return $typeResolver->resolveValue($post, 'commentsCount', $variables, $expressions, $options) > 0;
-
-            case 'publishedWithComments':
-                return $typeResolver->resolveValue($post, FieldQueryInterpreterFacade::getInstance()->getField('isStatus', ['status' => Status::PUBLISHED]), $variables, $expressions, $options) && $typeResolver->resolveValue($post, 'hasComments', $variables, $expressions, $options);
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);
