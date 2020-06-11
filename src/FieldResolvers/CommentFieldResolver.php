@@ -11,7 +11,7 @@ use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\Comments\TypeResolvers\CommentTypeResolver;
 use PoP\ComponentModel\TypeResolvers\UnionTypeHelpers;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Content\TypeResolvers\CustomPostUnionTypeResolver;
+use PoP\CustomPosts\TypeResolvers\CustomPostUnionTypeResolver;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 
 class CommentFieldResolver extends AbstractDBDataFieldResolver
