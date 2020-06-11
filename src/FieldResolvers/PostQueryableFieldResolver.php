@@ -10,7 +10,7 @@ use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\Comments\TypeResolvers\CommentTypeResolver;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\Content\FieldInterfaces\ContentEntityFieldInterfaceResolver;
+use PoP\Content\FieldInterfaces\CustomPostFieldInterfaceResolver;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
 
 class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
@@ -18,7 +18,7 @@ class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
     public static function getClassesToAttachTo(): array
     {
         return [
-            ContentEntityFieldInterfaceResolver::class,
+            CustomPostFieldInterfaceResolver::class,
         ];
     }
 
