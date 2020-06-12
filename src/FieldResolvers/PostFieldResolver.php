@@ -7,10 +7,8 @@ namespace PoP\Comments\FieldResolvers;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\ComponentModel\Facades\Schema\FieldQueryInterpreterFacade;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 use PoP\CustomPosts\FieldInterfaces\CustomPostFieldInterfaceResolver;
-use PoP\CustomPosts\Types\Status;
 
 class PostFieldResolver extends AbstractDBDataFieldResolver
 {
@@ -25,7 +23,8 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     {
         return [
             'commentsURL',
-            'commentsCount',
+            'areCommentsOpen',
+            'commentCount',
             'hasComments',
         ];
     }
@@ -34,7 +33,8 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     {
         $types = [
             'commentsURL' => SchemaDefinition::TYPE_URL,
-            'commentsCount' => SchemaDefinition::TYPE_INT,
+            'areCommentsOpen' => SchemaDefinition::TYPE_BOOL,
+            'commentCount' => SchemaDefinition::TYPE_INT,
             'hasComments' => SchemaDefinition::TYPE_BOOL,
         ];
         return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
@@ -43,7 +43,8 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
     public function isSchemaFieldResponseNonNullable(TypeResolverInterface $typeResolver, string $fieldName): bool
     {
         switch ($fieldName) {
-            case 'commentsCount':
+            case 'areCommentsOpen':
+            case 'commentCount':
             case 'hasComments':
                 return true;
         }
@@ -55,8 +56,9 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
             'commentsURL' => $translationAPI->__('URL of the comments section in the post page', 'pop-comments'),
-            'commentsCount' => $translationAPI->__('Number of comments added to the post', 'pop-comments'),
-            'hasComments' => $translationAPI->__('Does the post have comments?', 'pop-comments'),
+            'areCommentsOpen' => $translationAPI->__('Are comments open to be added to the custom post', 'pop-comments'),
+            'commentCount' => $translationAPI->__('Number of comments added to the custom post', 'pop-comments'),
+            'hasComments' => $translationAPI->__('Does the custom post have comments?', 'pop-comments'),
         ];
         return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
     }
@@ -69,11 +71,14 @@ class PostFieldResolver extends AbstractDBDataFieldResolver
             case 'commentsURL':
                 return $typeResolver->resolveValue($post, 'url', $variables, $expressions, $options);
 
-            case 'commentsCount':
-                return $cmscommentsapi->getCommentsNumber($typeResolver->getID($post));
+            case 'areCommentsOpen':
+                return $cmscommentsapi->areCommentsOpen($typeResolver->getID($post));
+
+            case 'commentCount':
+                return $cmscommentsapi->getCommentNumber($typeResolver->getID($post));
 
             case 'hasComments':
-                return $typeResolver->resolveValue($post, 'commentsCount', $variables, $expressions, $options) > 0;
+                return $typeResolver->resolveValue($post, 'commentCount', $variables, $expressions, $options) > 0;
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);
