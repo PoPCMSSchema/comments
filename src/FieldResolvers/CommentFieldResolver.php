@@ -47,7 +47,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'authorEmail' => SchemaDefinition::TYPE_EMAIL,
             'author' => SchemaDefinition::TYPE_ID,
             'post' => SchemaDefinition::TYPE_ID,
-            'postID' => SchemaDefinition::TYPE_ID,//SchemaDefinition::TYPE_UNRESOLVED_ID,
+            'postID' => SchemaDefinition::TYPE_ID,
             'approved' => SchemaDefinition::TYPE_BOOL,
             'type' => SchemaDefinition::TYPE_STRING,
             'parent' => SchemaDefinition::TYPE_ID,
