@@ -13,7 +13,7 @@ use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\CustomPosts\FieldInterfaces\CustomPostFieldInterfaceResolver;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
 
-class PostQueryableFieldResolver extends AbstractQueryableFieldResolver
+class CustomPostQueryableFieldResolver extends AbstractQueryableFieldResolver
 {
     public static function getClassesToAttachTo(): array
     {
