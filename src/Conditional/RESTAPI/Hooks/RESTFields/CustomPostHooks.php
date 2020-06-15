@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\Conditional\Posts\Conditional\RESTAPI\Hooks\RESTFields;
+namespace PoP\Comments\Conditional\RESTAPI\Hooks\RESTFields;
 
 use PoP\Engine\Hooks\AbstractHookSet;
 use PoP\CustomPosts\Conditional\RESTAPI\RouteModuleProcessors\EntryRouteModuleProcessorHelpers;

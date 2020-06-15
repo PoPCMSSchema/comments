@@ -34,7 +34,6 @@ class Component extends AbstractComponent
     public static function getDependedConditionalComponentClasses(): array
     {
         return [
-            \PoP\Posts\Component::class,
             \PoP\RESTAPI\Component::class,
         ];
     }
@@ -58,10 +57,10 @@ class Component extends AbstractComponent
         self::$COMPONENT_DIR = dirname(__DIR__);
         self::maybeInitYAMLSchemaServices(self::$COMPONENT_DIR, $skipSchema);
 
-        if (class_exists('\PoP\Posts\Component')
-            && !in_array(\PoP\Posts\Component::class, $skipSchemaComponentClasses)
+        if (class_exists('\PoP\RESTAPI\Component')
+            && !in_array(\PoP\RESTAPI\Component::class, $skipSchemaComponentClasses)
         ) {
-            \PoP\Comments\Conditional\Posts\ConditionalComponent::initialize(
+            \PoP\Comments\Conditional\RESTAPI\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
             );
@@ -81,8 +80,8 @@ class Component extends AbstractComponent
         ContainerBuilderUtils::registerTypeResolversFromNamespace(__NAMESPACE__ . '\\TypeResolvers');
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__ . '\\FieldResolvers');
 
-        if (class_exists('\PoP\Posts\Component')) {
-            \PoP\Comments\Conditional\Posts\ConditionalComponent::beforeBoot();
+        if (class_exists('\PoP\RESTAPI\Component')) {
+            \PoP\Comments\Conditional\RESTAPI\ConditionalComponent::beforeBoot();
         }
     }
 }

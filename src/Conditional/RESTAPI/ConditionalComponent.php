@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\Conditional\Posts;
+namespace PoP\Comments\Conditional\RESTAPI;
 
 use PoP\Comments\Component;
 use PoP\Root\Component\YAMLServicesTrait;
@@ -20,14 +20,7 @@ class ConditionalComponent
         bool $skipSchema = false,
         array $skipSchemaComponentClasses = []
     ): void {
-        if (class_exists('\PoP\RESTAPI\Component')
-            && !in_array(\PoP\RESTAPI\Component::class, $skipSchemaComponentClasses)
-        ) {
-            \PoP\Comments\Conditional\Posts\Conditional\RESTAPI\ConditionalComponent::initialize(
-                $configuration,
-                $skipSchema
-            );
-        }
+        self::initYAMLServices(Component::$COMPONENT_DIR, '/Conditional/RESTAPI');
     }
 
     /**
@@ -37,8 +30,6 @@ class ConditionalComponent
      */
     public static function beforeBoot(): void
     {
-        if (class_exists('\PoP\RESTAPI\Component')) {
-            \PoP\Comments\Conditional\Posts\Conditional\RESTAPI\ConditionalComponent::beforeBoot();
-        }
+        ContainerBuilderUtils::instantiateNamespaceServices(__NAMESPACE__ . '\\Hooks');
     }
 }
