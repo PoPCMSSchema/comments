@@ -14,12 +14,28 @@ use PoP\ComponentModel\Container\ContainerBuilderUtils;
 class Component extends AbstractComponent
 {
     use YAMLServicesTrait;
+
+    public static $COMPONENT_DIR;
+
     // const VERSION = '0.1.0';
 
     public static function getDependedComponentClasses(): array
     {
         return [
+            \PoP\CustomPosts\Component::class,
+        ];
+    }
+
+    /**
+     * All conditional component classes that this component depends upon, to initialize them
+     *
+     * @return array
+     */
+    public static function getDependedConditionalComponentClasses(): array
+    {
+        return [
             \PoP\Posts\Component::class,
+            \PoP\RESTAPI\Component::class,
         ];
     }
 
@@ -39,8 +55,17 @@ class Component extends AbstractComponent
         array $skipSchemaComponentClasses = []
     ): void {
         parent::doInitialize($configuration, $skipSchema, $skipSchemaComponentClasses);
-        self::initYAMLServices(dirname(__DIR__));
-        self::maybeInitYAMLSchemaServices(dirname(__DIR__), $skipSchema);
+        self::$COMPONENT_DIR = dirname(__DIR__);
+        self::maybeInitYAMLSchemaServices(self::$COMPONENT_DIR, $skipSchema);
+
+        if (class_exists('\PoP\Posts\Component')
+            && !in_array(\PoP\Posts\Component::class, $skipSchemaComponentClasses)
+        ) {
+            \PoP\Comments\Conditional\Posts\ConditionalComponent::initialize(
+                $configuration,
+                $skipSchema
+            );
+        }
     }
 
     /**
@@ -54,7 +79,10 @@ class Component extends AbstractComponent
 
         // Initialize all hooks
         ContainerBuilderUtils::registerTypeResolversFromNamespace(__NAMESPACE__ . '\\TypeResolvers');
-        ContainerBuilderUtils::instantiateNamespaceServices(__NAMESPACE__ . '\\Hooks');
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__ . '\\FieldResolvers');
+
+        if (class_exists('\PoP\Posts\Component')) {
+            \PoP\Comments\Conditional\Posts\ConditionalComponent::beforeBoot();
+        }
     }
 }
