@@ -29,7 +29,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'authorURL',
             'authorEmail',
             'author',
-            'post',
+            'customPost',
             'postID',
             'approved',
             'type',
@@ -46,7 +46,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'authorURL' => SchemaDefinition::TYPE_URL,
             'authorEmail' => SchemaDefinition::TYPE_EMAIL,
             'author' => SchemaDefinition::TYPE_ID,
-            'post' => SchemaDefinition::TYPE_ID,
+            'customPost' => SchemaDefinition::TYPE_ID,
             'postID' => SchemaDefinition::TYPE_ID,
             'approved' => SchemaDefinition::TYPE_BOOL,
             'type' => SchemaDefinition::TYPE_STRING,
@@ -60,7 +60,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
     {
         switch ($fieldName) {
             case 'content':
-            case 'post':
+            case 'customPost':
             case 'postID':
             case 'approved':
             case 'type':
@@ -79,8 +79,8 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'authorURL' => $translationAPI->__('Comment author\'s URL', 'pop-comments'),
             'authorEmail' => $translationAPI->__('Comment author\'s email', 'pop-comments'),
             'author' => $translationAPI->__('Comment\'s author', 'pop-comments'),
-            'post' => $translationAPI->__('Post to which the comment was added', 'pop-comments'),
-            'postID' => $translationAPI->__('Post to which the comment was added', 'pop-comments'),
+            'customPost' => $translationAPI->__('Custom post to which the comment was added', 'pop-comments'),
+            'postID' => $translationAPI->__('ID of the custom post to which the comment was added', 'pop-comments'),
             'approved' => $translationAPI->__('Is the comment approved?', 'pop-comments'),
             'type' => $translationAPI->__('Type of comment', 'pop-comments'),
             'parent' => $translationAPI->__('Parent comment (if this comment is a response to another one)', 'pop-comments'),
@@ -111,7 +111,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             case 'author':
                 return $cmscommentsresolver->getCommentUserId($comment);
 
-            case 'post':
+            case 'customPost':
             case 'postID':
                 return $cmscommentsresolver->getCommentPostId($comment);
 
@@ -164,7 +164,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             case 'author':
                 return UserTypeResolver::class;
 
-            case 'post':
+            case 'customPost':
                 return UnionTypeHelpers::getUnionOrTargetTypeResolverClass(CustomPostUnionTypeResolver::class);
 
             case 'parent':
