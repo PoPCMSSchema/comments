@@ -29,7 +29,7 @@ class CommentTypeDataLoader extends AbstractTypeQueryableDataLoader
 
         $query['status'] = POP_COMMENTSTATUS_APPROVED;
         // $query['type'] = 'comment'; // Only comments, no trackbacks or pingbacks
-        $query['postID'] = $query_args[GD_URLPARAM_COMMENTPOSTID];
+        $query['customPostID'] = $query_args[GD_URLPARAM_COMMENTPOSTID];
 
         return $query;
     }

@@ -30,7 +30,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'authorEmail',
             'author',
             'customPost',
-            'postID',
+            'customPostID',
             'approved',
             'type',
             'parent',
@@ -47,7 +47,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'authorEmail' => SchemaDefinition::TYPE_EMAIL,
             'author' => SchemaDefinition::TYPE_ID,
             'customPost' => SchemaDefinition::TYPE_ID,
-            'postID' => SchemaDefinition::TYPE_ID,
+            'customPostID' => SchemaDefinition::TYPE_ID,
             'approved' => SchemaDefinition::TYPE_BOOL,
             'type' => SchemaDefinition::TYPE_STRING,
             'parent' => SchemaDefinition::TYPE_ID,
@@ -61,7 +61,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
         switch ($fieldName) {
             case 'content':
             case 'customPost':
-            case 'postID':
+            case 'customPostID':
             case 'approved':
             case 'type':
             case 'date':
@@ -80,7 +80,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'authorEmail' => $translationAPI->__('Comment author\'s email', 'pop-comments'),
             'author' => $translationAPI->__('Comment\'s author', 'pop-comments'),
             'customPost' => $translationAPI->__('Custom post to which the comment was added', 'pop-comments'),
-            'postID' => $translationAPI->__('ID of the custom post to which the comment was added', 'pop-comments'),
+            'customPostID' => $translationAPI->__('ID of the custom post to which the comment was added', 'pop-comments'),
             'approved' => $translationAPI->__('Is the comment approved?', 'pop-comments'),
             'type' => $translationAPI->__('Type of comment', 'pop-comments'),
             'parent' => $translationAPI->__('Parent comment (if this comment is a response to another one)', 'pop-comments'),
@@ -112,7 +112,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
                 return $cmscommentsresolver->getCommentUserId($comment);
 
             case 'customPost':
-            case 'postID':
+            case 'customPostID':
                 return $cmscommentsresolver->getCommentPostId($comment);
 
             case 'approved':
