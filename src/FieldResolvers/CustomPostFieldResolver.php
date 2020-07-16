@@ -22,7 +22,6 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
     public static function getFieldNamesToResolve(): array
     {
         return [
-            'commentsURL',
             'areCommentsOpen',
             'commentCount',
             'hasComments',
@@ -32,7 +31,6 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
     public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
     {
         $types = [
-            'commentsURL' => SchemaDefinition::TYPE_URL,
             'areCommentsOpen' => SchemaDefinition::TYPE_BOOL,
             'commentCount' => SchemaDefinition::TYPE_INT,
             'hasComments' => SchemaDefinition::TYPE_BOOL,
@@ -55,7 +53,6 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
-            'commentsURL' => $translationAPI->__('URL of the comments section in the post page', 'pop-comments'),
             'areCommentsOpen' => $translationAPI->__('Are comments open to be added to the custom post', 'pop-comments'),
             'commentCount' => $translationAPI->__('Number of comments added to the custom post', 'pop-comments'),
             'hasComments' => $translationAPI->__('Does the custom post have comments?', 'pop-comments'),
@@ -68,9 +65,6 @@ class CustomPostFieldResolver extends AbstractDBDataFieldResolver
         $cmscommentsapi = \PoP\Comments\FunctionAPIFactory::getInstance();
         $post = $resultItem;
         switch ($fieldName) {
-            case 'commentsURL':
-                return $typeResolver->resolveValue($post, 'url', $variables, $expressions, $options);
-
             case 'areCommentsOpen':
                 return $cmscommentsapi->areCommentsOpen($typeResolver->getID($post));
 
