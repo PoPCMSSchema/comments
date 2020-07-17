@@ -8,7 +8,6 @@ use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\Schema\TypeCastingHelpers;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\Comments\TypeDataLoaders\CommentTypeDataLoader;
-use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\Facades\Instances\InstanceManagerFacade;
 use PoP\ComponentModel\FieldInterfaceResolvers\AbstractQueryableSchemaFieldInterfaceResolver;
 
@@ -36,7 +35,7 @@ class CommentableFieldInterfaceResolver extends AbstractQueryableSchemaFieldInte
         ];
     }
 
-    public function getSchemaFieldType(TypeResolverInterface $typeResolver, string $fieldName): ?string
+    public function getSchemaFieldType(string $fieldName): ?string
     {
         $types = [
             'areCommentsOpen' => SchemaDefinition::TYPE_BOOL,
@@ -44,10 +43,10 @@ class CommentableFieldInterfaceResolver extends AbstractQueryableSchemaFieldInte
             'hasComments' => SchemaDefinition::TYPE_BOOL,
             'comments' => TypeCastingHelpers::makeArray(SchemaDefinition::TYPE_ID),
         ];
-        return $types[$fieldName] ?? parent::getSchemaFieldType($typeResolver, $fieldName);
+        return $types[$fieldName] ?? parent::getSchemaFieldType($fieldName);
     }
 
-    public function isSchemaFieldResponseNonNullable(TypeResolverInterface $typeResolver, string $fieldName): bool
+    public function isSchemaFieldResponseNonNullable(string $fieldName): bool
     {
         switch ($fieldName) {
             case 'areCommentsOpen':
@@ -56,10 +55,10 @@ class CommentableFieldInterfaceResolver extends AbstractQueryableSchemaFieldInte
             case 'comments':
                 return true;
         }
-        return parent::isSchemaFieldResponseNonNullable($typeResolver, $fieldName);
+        return parent::isSchemaFieldResponseNonNullable($fieldName);
     }
 
-    public function getSchemaFieldDescription(TypeResolverInterface $typeResolver, string $fieldName): ?string
+    public function getSchemaFieldDescription(string $fieldName): ?string
     {
         $translationAPI = TranslationAPIFacade::getInstance();
         $descriptions = [
@@ -68,12 +67,12 @@ class CommentableFieldInterfaceResolver extends AbstractQueryableSchemaFieldInte
             'hasComments' => $translationAPI->__('Does the custom post have comments?', 'pop-comments'),
             'comments' => $translationAPI->__('Comments added to the custom post', 'pop-comments'),
         ];
-        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($typeResolver, $fieldName);
+        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($fieldName);
     }
 
-    public function getSchemaFieldArgs(TypeResolverInterface $typeResolver, string $fieldName): array
+    public function getSchemaFieldArgs(string $fieldName): array
     {
-        $schemaFieldArgs = parent::getSchemaFieldArgs($typeResolver, $fieldName);
+        $schemaFieldArgs = parent::getSchemaFieldArgs($fieldName);
         switch ($fieldName) {
             case 'comments':
                 // Retrieve the module to filter for comments from the DataLoader
