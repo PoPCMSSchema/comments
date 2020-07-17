@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PoP\Comments\FieldResolvers;
 
-use PoP\Users\TypeResolvers\UserTypeResolver;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\LooseContracts\Facades\NameResolverFacade;
@@ -28,7 +27,6 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'authorName',
             'authorURL',
             'authorEmail',
-            'author',
             'customPost',
             'customPostID',
             'approved',
@@ -45,7 +43,6 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'authorName' => SchemaDefinition::TYPE_STRING,
             'authorURL' => SchemaDefinition::TYPE_URL,
             'authorEmail' => SchemaDefinition::TYPE_EMAIL,
-            'author' => SchemaDefinition::TYPE_ID,
             'customPost' => SchemaDefinition::TYPE_ID,
             'customPostID' => SchemaDefinition::TYPE_ID,
             'approved' => SchemaDefinition::TYPE_BOOL,
@@ -78,7 +75,6 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
             'authorName' => $translationAPI->__('Comment author\'s name', 'pop-comments'),
             'authorURL' => $translationAPI->__('Comment author\'s URL', 'pop-comments'),
             'authorEmail' => $translationAPI->__('Comment author\'s email', 'pop-comments'),
-            'author' => $translationAPI->__('Comment\'s author', 'pop-comments'),
             'customPost' => $translationAPI->__('Custom post to which the comment was added', 'pop-comments'),
             'customPostID' => $translationAPI->__('ID of the custom post to which the comment was added', 'pop-comments'),
             'approved' => $translationAPI->__('Is the comment approved?', 'pop-comments'),
@@ -107,9 +103,6 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
 
             case 'authorEmail':
                 return $cmsusersapi->getUserEmail($cmscommentsresolver->getCommentUserId($comment));
-
-            case 'author':
-                return $cmscommentsresolver->getCommentUserId($comment);
 
             case 'customPost':
             case 'customPostID':
@@ -161,9 +154,6 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
     public function resolveFieldTypeResolverClass(TypeResolverInterface $typeResolver, string $fieldName, array $fieldArgs = []): ?string
     {
         switch ($fieldName) {
-            case 'author':
-                return UserTypeResolver::class;
-
             case 'customPost':
                 return CustomPostUnionTypeHelpers::getCustomPostUnionOrTargetTypeResolverClass(CustomPostUnionTypeResolver::class);
 

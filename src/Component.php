@@ -65,6 +65,15 @@ class Component extends AbstractComponent
                 $skipSchema
             );
         }
+
+        if (class_exists('\PoP\Users\Component')
+            && !in_array(\PoP\Users\Component::class, $skipSchemaComponentClasses)
+        ) {
+            \PoP\Comments\Conditional\Users\ConditionalComponent::initialize(
+                $configuration,
+                $skipSchema
+            );
+        }
     }
 
     /**
@@ -82,6 +91,9 @@ class Component extends AbstractComponent
 
         if (class_exists('\PoP\RESTAPI\Component')) {
             \PoP\Comments\Conditional\RESTAPI\ConditionalComponent::beforeBoot();
+        }
+        if (class_exists('\PoP\Users\Component')) {
+            \PoP\Comments\Conditional\Users\ConditionalComponent::beforeBoot();
         }
     }
 }
