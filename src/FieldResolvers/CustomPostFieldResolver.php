@@ -8,7 +8,7 @@ use PoP\LooseContracts\Facades\NameResolverFacade;
 use PoP\Comments\TypeResolvers\CommentTypeResolver;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
-use PoP\CustomPosts\FieldInterfaces\CustomPostFieldInterfaceResolver;
+use PoP\CustomPosts\FieldInterfaceResolvers\CustomPostFieldInterfaceResolver;
 use PoP\Comments\FieldInterfaceResolvers\CommentableFieldInterfaceResolver;
 use PoP\ComponentModel\FieldResolvers\FieldSchemaDefinitionResolverInterface;
 
