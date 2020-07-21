@@ -6,3 +6,7 @@ services:
     PoP\Comments\TypeResolvers\:
         resource: '../src/TypeResolvers/*'
         public: true
+
+    PoP\Comments\FieldInterfaceResolvers\:
+        resource: '../src/FieldInterfaceResolvers/*'
+        public: true

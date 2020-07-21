@@ -88,6 +88,7 @@ class Component extends AbstractComponent
         // Initialize all hooks
         ContainerBuilderUtils::registerTypeResolversFromNamespace(__NAMESPACE__ . '\\TypeResolvers');
         ContainerBuilderUtils::attachFieldResolversFromNamespace(__NAMESPACE__ . '\\FieldResolvers');
+        ContainerBuilderUtils::registerFieldInterfaceResolversFromNamespace(__NAMESPACE__ . '\\FieldInterfaceResolvers');
 
         if (class_exists('\PoP\RESTAPI\Component')) {
             \PoP\Comments\Conditional\RESTAPI\ConditionalComponent::beforeBoot();
