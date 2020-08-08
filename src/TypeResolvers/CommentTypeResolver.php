@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\TypeResolvers;
+namespace PoPSchema\Comments\TypeResolvers;
 
 use PoP\Translation\Facades\TranslationAPIFacade;
-use PoP\Comments\TypeDataLoaders\CommentTypeDataLoader;
+use PoPSchema\Comments\TypeDataLoaders\CommentTypeDataLoader;
 use PoP\ComponentModel\TypeResolvers\AbstractTypeResolver;
 
 class CommentTypeResolver extends AbstractTypeResolver
@@ -25,7 +25,7 @@ class CommentTypeResolver extends AbstractTypeResolver
 
     public function getID($resultItem)
     {
-        $cmscommentsresolver = \PoP\Comments\ObjectPropertyResolverFactory::getInstance();
+        $cmscommentsresolver = \PoPSchema\Comments\ObjectPropertyResolverFactory::getInstance();
         $comment = $resultItem;
         return $cmscommentsresolver->getCommentId($comment);
     }

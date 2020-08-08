@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\FieldResolvers;
+namespace PoPSchema\Comments\FieldResolvers;
 
 use PoP\LooseContracts\Facades\NameResolverFacade;
-use PoP\Comments\TypeResolvers\CommentTypeResolver;
+use PoPSchema\Comments\TypeResolvers\CommentTypeResolver;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\AbstractQueryableFieldResolver;
-use PoP\CustomPosts\FieldInterfaceResolvers\IsCustomPostFieldInterfaceResolver;
-use PoP\Comments\FieldInterfaceResolvers\CommentableFieldInterfaceResolver;
+use PoPSchema\CustomPosts\FieldInterfaceResolvers\IsCustomPostFieldInterfaceResolver;
+use PoPSchema\Comments\FieldInterfaceResolvers\CommentableFieldInterfaceResolver;
 use PoP\ComponentModel\FieldResolvers\FieldSchemaDefinitionResolverInterface;
 
 class CustomPostFieldResolver extends AbstractQueryableFieldResolver
@@ -50,7 +50,7 @@ class CustomPostFieldResolver extends AbstractQueryableFieldResolver
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $cmscommentsapi = \PoP\Comments\FunctionAPIFactory::getInstance();
+        $cmscommentsapi = \PoPSchema\Comments\FunctionAPIFactory::getInstance();
         $post = $resultItem;
         switch ($fieldName) {
             case 'areCommentsOpen':

@@ -1,5 +1,5 @@
 {
-    "name": "getpop/comments",
+    "name": "pop-schema/comments",
     "type": "library",
     "description": "Adds support for comments",
     "keywords": [
@@ -19,8 +19,8 @@
     "prefer-stable": true,
     "require": {
         "php": "~7.2",
-        "getpop/customposts": "dev-master",
-        "getpop/migrate-comments": "dev-master"
+        "pop-schema/customposts": "dev-master",
+        "pop-schema/migrate-comments": "dev-master"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12",
@@ -29,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PoP\\Comments\\": "src"
+            "PoPSchema\\Comments\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PoP\\Comments\\": "tests"
+            "PoPSchema\\Comments\\": "tests"
         }
     },
     "scripts": {

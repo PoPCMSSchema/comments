@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\Conditional\RESTAPI;
+namespace PoPSchema\Comments\Conditional\RESTAPI;
 
-use PoP\Comments\Component;
+use PoPSchema\Comments\Component;
 use PoP\Root\Component\YAMLServicesTrait;
 use PoP\ComponentModel\Container\ContainerBuilderUtils;
 

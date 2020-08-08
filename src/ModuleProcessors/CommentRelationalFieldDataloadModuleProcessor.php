@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\ModuleProcessors;
+namespace PoPSchema\Comments\ModuleProcessors;
 
-use PoP\Comments\TypeResolvers\CommentTypeResolver;
-use PoP\Comments\ModuleProcessors\CommentFilterInnerModuleProcessor;
+use PoPSchema\Comments\TypeResolvers\CommentTypeResolver;
+use PoPSchema\Comments\ModuleProcessors\CommentFilterInnerModuleProcessor;
 use PoP\API\ModuleProcessors\AbstractRelationalFieldDataloadModuleProcessor;
 use PoP\ComponentModel\QueryInputOutputHandlers\ListQueryInputOutputHandler;
 

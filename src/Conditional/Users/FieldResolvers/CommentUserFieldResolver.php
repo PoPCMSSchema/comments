@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\Conditional\Users\FieldResolvers;
+namespace PoPSchema\Comments\Conditional\Users\FieldResolvers;
 
-use PoP\Users\TypeResolvers\UserTypeResolver;
-use PoP\Comments\TypeResolvers\CommentTypeResolver;
+use PoPSchema\Users\TypeResolvers\UserTypeResolver;
+use PoPSchema\Comments\TypeResolvers\CommentTypeResolver;
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
@@ -44,7 +44,7 @@ class CommentUserFieldResolver extends AbstractDBDataFieldResolver
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $cmscommentsresolver = \PoP\Comments\ObjectPropertyResolverFactory::getInstance();
+        $cmscommentsresolver = \PoPSchema\Comments\ObjectPropertyResolverFactory::getInstance();
         $comment = $resultItem;
         switch ($fieldName) {
             case 'author':

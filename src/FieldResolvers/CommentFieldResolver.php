@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\FieldResolvers;
+namespace PoPSchema\Comments\FieldResolvers;
 
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\Translation\Facades\TranslationAPIFacade;
 use PoP\LooseContracts\Facades\NameResolverFacade;
-use PoP\Comments\TypeResolvers\CommentTypeResolver;
-use PoP\CustomPosts\TypeHelpers\CustomPostUnionTypeHelpers;
+use PoPSchema\Comments\TypeResolvers\CommentTypeResolver;
+use PoPSchema\CustomPosts\TypeHelpers\CustomPostUnionTypeHelpers;
 use PoP\ComponentModel\TypeResolvers\TypeResolverInterface;
-use PoP\CustomPosts\TypeResolvers\CustomPostUnionTypeResolver;
+use PoPSchema\CustomPosts\TypeResolvers\CustomPostUnionTypeResolver;
 use PoP\ComponentModel\FieldResolvers\AbstractDBDataFieldResolver;
 
 class CommentFieldResolver extends AbstractDBDataFieldResolver
@@ -87,9 +87,9 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
 
     public function resolveValue(TypeResolverInterface $typeResolver, $resultItem, string $fieldName, array $fieldArgs = [], ?array $variables = null, ?array $expressions = null, array $options = [])
     {
-        $cmscommentsresolver = \PoP\Comments\ObjectPropertyResolverFactory::getInstance();
+        $cmscommentsresolver = \PoPSchema\Comments\ObjectPropertyResolverFactory::getInstance();
         $cmsengineapi = \PoP\Engine\FunctionAPIFactory::getInstance();
-        $cmsusersapi = \PoP\Users\FunctionAPIFactory::getInstance();
+        $cmsusersapi = \PoPSchema\Users\FunctionAPIFactory::getInstance();
         $comment = $resultItem;
         switch ($fieldName) {
             case 'content':

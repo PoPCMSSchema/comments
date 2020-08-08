@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\TypeDataLoaders;
+namespace PoPSchema\Comments\TypeDataLoaders;
 
 use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
-use PoP\Comments\ModuleProcessors\CommentRelationalFieldDataloadModuleProcessor;
+use PoPSchema\Comments\ModuleProcessors\CommentRelationalFieldDataloadModuleProcessor;
 
 class CommentTypeDataLoader extends AbstractTypeQueryableDataLoader
 {
@@ -16,7 +16,7 @@ class CommentTypeDataLoader extends AbstractTypeQueryableDataLoader
 
     public function getObjects(array $ids): array
     {
-        $cmscommentsapi = \PoP\Comments\FunctionAPIFactory::getInstance();
+        $cmscommentsapi = \PoPSchema\Comments\FunctionAPIFactory::getInstance();
         $query = [
             'include' => $ids,
         ];
@@ -42,7 +42,7 @@ class CommentTypeDataLoader extends AbstractTypeQueryableDataLoader
 
     public function executeQuery($query, array $options = [])
     {
-        $cmscommentsapi = \PoP\Comments\FunctionAPIFactory::getInstance();
+        $cmscommentsapi = \PoPSchema\Comments\FunctionAPIFactory::getInstance();
         return $cmscommentsapi->getComments($query, $options);
     }
 

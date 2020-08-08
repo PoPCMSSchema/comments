@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\Facades;
+namespace PoPSchema\Comments\Facades;
 
-use PoP\Comments\TypeAPIs\CommentTypeAPIInterface;
+use PoPSchema\Comments\TypeAPIs\CommentTypeAPIInterface;
 use PoP\Root\Container\ContainerBuilderFactory;
 
 class CommentTypeAPIFacade

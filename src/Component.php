@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments;
+namespace PoPSchema\Comments;
 
 use PoP\Root\Component\AbstractComponent;
 use PoP\Root\Component\YAMLServicesTrait;
@@ -22,7 +22,7 @@ class Component extends AbstractComponent
     public static function getDependedComponentClasses(): array
     {
         return [
-            \PoP\CustomPosts\Component::class,
+            \PoPSchema\CustomPosts\Component::class,
         ];
     }
 
@@ -60,16 +60,16 @@ class Component extends AbstractComponent
         if (class_exists('\PoP\RESTAPI\Component')
             && !in_array(\PoP\RESTAPI\Component::class, $skipSchemaComponentClasses)
         ) {
-            \PoP\Comments\Conditional\RESTAPI\ConditionalComponent::initialize(
+            \PoPSchema\Comments\Conditional\RESTAPI\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
             );
         }
 
-        if (class_exists('\PoP\Users\Component')
-            && !in_array(\PoP\Users\Component::class, $skipSchemaComponentClasses)
+        if (class_exists('\PoPSchema\Users\Component')
+            && !in_array(\PoPSchema\Users\Component::class, $skipSchemaComponentClasses)
         ) {
-            \PoP\Comments\Conditional\Users\ConditionalComponent::initialize(
+            \PoPSchema\Comments\Conditional\Users\ConditionalComponent::initialize(
                 $configuration,
                 $skipSchema
             );
@@ -91,10 +91,10 @@ class Component extends AbstractComponent
         ContainerBuilderUtils::registerFieldInterfaceResolversFromNamespace(__NAMESPACE__ . '\\FieldInterfaceResolvers');
 
         if (class_exists('\PoP\RESTAPI\Component')) {
-            \PoP\Comments\Conditional\RESTAPI\ConditionalComponent::beforeBoot();
+            \PoPSchema\Comments\Conditional\RESTAPI\ConditionalComponent::beforeBoot();
         }
-        if (class_exists('\PoP\Users\Component')) {
-            \PoP\Comments\Conditional\Users\ConditionalComponent::beforeBoot();
+        if (class_exists('\PoPSchema\Users\Component')) {
+            \PoPSchema\Comments\Conditional\Users\ConditionalComponent::beforeBoot();
         }
     }
 }

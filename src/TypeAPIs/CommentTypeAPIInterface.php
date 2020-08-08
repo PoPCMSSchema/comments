@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\TypeAPIs;
+namespace PoPSchema\Comments\TypeAPIs;
 
 /**
  * Methods to interact with the Type, to be implemented by the underlying CMS

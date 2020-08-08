@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace PoP\Comments\FieldInterfaceResolvers;
+namespace PoPSchema\Comments\FieldInterfaceResolvers;
 
 use PoP\ComponentModel\Schema\SchemaDefinition;
 use PoP\ComponentModel\Schema\TypeCastingHelpers;
 use PoP\Translation\Facades\TranslationAPIFacade;
-use PoP\Comments\TypeDataLoaders\CommentTypeDataLoader;
+use PoPSchema\Comments\TypeDataLoaders\CommentTypeDataLoader;
 use PoP\ComponentModel\Facades\Instances\InstanceManagerFacade;
 use PoP\ComponentModel\FieldInterfaceResolvers\AbstractQueryableSchemaFieldInterfaceResolver;
 
