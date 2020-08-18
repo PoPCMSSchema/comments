@@ -6,6 +6,7 @@ namespace PoPSchema\Comments\TypeDataLoaders;
 
 use PoP\ComponentModel\TypeDataLoaders\AbstractTypeQueryableDataLoader;
 use PoPSchema\Comments\ModuleProcessors\CommentRelationalFieldDataloadModuleProcessor;
+use PoPSchema\SchemaCommons\DataLoading\ReturnTypes;
 
 class CommentTypeDataLoader extends AbstractTypeQueryableDataLoader
 {
@@ -49,7 +50,7 @@ class CommentTypeDataLoader extends AbstractTypeQueryableDataLoader
     public function executeQueryIds($query): array
     {
         $options = [
-            'return-type' => \POP_RETURNTYPE_IDS,
+            'return-type' => ReturnTypes::IDS,
         ];
         return (array)$this->executeQuery($query, $options);
     }
