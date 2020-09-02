@@ -77,6 +77,9 @@ class CommentableFieldInterfaceResolver extends AbstractQueryableSchemaFieldInte
             case 'comments':
                 // Retrieve the module to filter for comments from the DataLoader
                 $instanceManager = InstanceManagerFacade::getInstance();
+                /**
+                 * @var CommentTypeDataLoader
+                 */
                 $commentTypeDataLoader = $instanceManager->getInstance(CommentTypeDataLoader::class);
                 if ($filterDataloadingModule = $commentTypeDataLoader->getFilterDataloadingModule()) {
                     // Retrieve all the schema definitions for the filter inputs
