@@ -23,7 +23,7 @@ class CommentTypeResolver extends AbstractTypeResolver
         return $translationAPI->__('Comments added to posts', 'comments');
     }
 
-    public function getID($resultItem)
+    public function getID(object $resultItem)
     {
         $cmscommentsresolver = \PoPSchema\Comments\ObjectPropertyResolverFactory::getInstance();
         $comment = $resultItem;
