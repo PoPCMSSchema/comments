@@ -11,6 +11,10 @@ class CommentTypeAPIFacade
 {
     public static function getInstance(): CommentTypeAPIInterface
     {
-        return ContainerBuilderFactory::getInstance()->get('comment_type_api');
+        /**
+         * @var CommentTypeAPIInterface
+         */
+        $service = ContainerBuilderFactory::getInstance()->get('comment_type_api');
+        return $service;
     }
 }
