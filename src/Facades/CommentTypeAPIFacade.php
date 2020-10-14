@@ -14,7 +14,7 @@ class CommentTypeAPIFacade
         /**
          * @var CommentTypeAPIInterface
          */
-        $service = ContainerBuilderFactory::getInstance()->get('comment_type_api');
+        $service = ContainerBuilderFactory::getInstance()->get(CommentTypeAPIInterface::class);
         return $service;
     }
 }
