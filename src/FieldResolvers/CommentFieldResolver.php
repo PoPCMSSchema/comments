@@ -132,8 +132,7 @@ class CommentFieldResolver extends AbstractDBDataFieldResolver
                 return $cmscommentsresolver->getCommentParent($comment);
 
             case 'date':
-                $format = $fieldArgs['format'] ?? $cmsengineapi->getOption(NameResolverFacade::getInstance()->getName('popcms:option:dateFormat'));
-                return $cmsengineapi->getDate($format, $cmscommentsresolver->getCommentDateGmt($comment));
+                return $cmsengineapi->getDate($fieldArgs['format'], $cmscommentsresolver->getCommentDateGmt($comment));
         }
 
         return parent::resolveValue($typeResolver, $resultItem, $fieldName, $fieldArgs, $variables, $expressions, $options);
