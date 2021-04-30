@@ -8,7 +8,7 @@ use PoP\Hooks\AbstractHookSet;
 use PoP\RESTAPI\Helpers\HookHelpers;
 use PoPSchema\CustomPosts\ConditionalOnComponent\RESTAPI\RouteModuleProcessors\AbstractCustomPostRESTEntryRouteModuleProcessor;
 
-class CustomPostHooks extends AbstractHookSet
+class CustomPostHookSet extends AbstractHookSet
 {
     const COMMENT_RESTFIELDS = 'comments.id|content';
 
