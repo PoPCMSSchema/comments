@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PoPSchema\Comments\Conditional\RESTAPI\Hooks\RESTFields;
+namespace PoPSchema\Comments\ConditionalOnComponent\RESTAPI\Hooks\RESTFields;
 
 use PoP\Hooks\AbstractHookSet;
-use PoPSchema\CustomPosts\Conditional\RESTAPI\RouteModuleProcessorHelpers\EntryRouteModuleProcessorHelpers;
+use PoPSchema\CustomPosts\ConditionalOnComponent\RESTAPI\RouteModuleProcessorHelpers\EntryRouteModuleProcessorHelpers;
 
 class CustomPostHooks extends AbstractHookSet
 {

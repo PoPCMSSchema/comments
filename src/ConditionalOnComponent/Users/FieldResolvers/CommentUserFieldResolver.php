@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoPSchema\Comments\Conditional\Users\FieldResolvers;
+namespace PoPSchema\Comments\ConditionalOnComponent\Users\FieldResolvers;
 
 use PoPSchema\Users\TypeResolvers\UserTypeResolver;
 use PoPSchema\Comments\TypeResolvers\CommentTypeResolver;
