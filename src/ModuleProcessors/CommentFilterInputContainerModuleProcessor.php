@@ -8,7 +8,7 @@ use PoP\ComponentModel\ModuleProcessors\AbstractFilterDataModuleProcessor;
 use PoPSchema\SchemaCommons\ModuleProcessors\FormInputs\CommonFilterInputModuleProcessor;
 use PoPSchema\SchemaCommons\ModuleProcessors\FormInputs\CommonFilterMultipleInputModuleProcessor;
 
-class CommentFilterInnerModuleProcessor extends AbstractFilterDataModuleProcessor
+class CommentFilterInputContainerModuleProcessor extends AbstractFilterDataModuleProcessor
 {
     public const MODULE_FILTERINNER_COMMENTS = 'filterinner-comments';
 
@@ -36,7 +36,7 @@ class CommentFilterInnerModuleProcessor extends AbstractFilterDataModuleProcesso
         ];
         if (
             $modules = $this->hooksAPI->applyFilters(
-                'Comments:FilterInnerModuleProcessor:inputmodules',
+                'Comments:FilterInputContainerModuleProcessor:inputmodules',
                 $inputmodules[$module[1]],
                 $module
             )
