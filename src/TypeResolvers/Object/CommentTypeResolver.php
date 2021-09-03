@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PoPSchema\Comments\TypeResolvers;
+namespace PoPSchema\Comments\TypeResolvers\Object;
 
 use PoP\ComponentModel\ErrorHandling\ErrorProviderInterface;
 use PoP\ComponentModel\Instances\InstanceManagerInterface;
@@ -10,7 +10,7 @@ use PoP\ComponentModel\Schema\FeedbackMessageStoreInterface;
 use PoP\ComponentModel\Schema\FieldQueryInterpreterInterface;
 use PoP\ComponentModel\Schema\SchemaDefinitionServiceInterface;
 use PoP\ComponentModel\Schema\SchemaNamespacingServiceInterface;
-use PoP\ComponentModel\TypeResolvers\AbstractObjectTypeResolver;
+use PoP\ComponentModel\TypeResolvers\Object\AbstractObjectTypeResolver;
 use PoP\Hooks\HooksAPIInterface;
 use PoP\Translation\TranslationAPIInterface;
 use PoPSchema\Comments\TypeAPIs\CommentTypeAPIInterface;
