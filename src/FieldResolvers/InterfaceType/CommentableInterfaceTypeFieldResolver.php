@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PoPSchema\Comments\FieldResolvers\InterfaceType;
 
-use Symfony\Contracts\Service\Attribute\Required;
 use PoP\ComponentModel\FieldResolvers\InterfaceType\AbstractQueryableSchemaInterfaceTypeFieldResolver;
 use PoP\ComponentModel\FilterInput\FilterInputHelper;
 use PoP\ComponentModel\Schema\SchemaTypeModifiers;
@@ -18,6 +17,7 @@ use PoPSchema\Comments\TypeResolvers\ObjectType\CommentObjectTypeResolver;
 use PoPSchema\SchemaCommons\FormInputs\OrderFormInput;
 use PoPSchema\SchemaCommons\ModuleProcessors\FormInputs\CommonFilterInputModuleProcessor;
 use PoPSchema\SchemaCommons\Resolvers\WithLimitFieldArgResolverTrait;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInterfaceTypeFieldResolver
 {
@@ -59,15 +59,15 @@ class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInter
 
     public function getFieldTypeResolver(string $fieldName): ConcreteTypeResolverInterface
     {
-        $types = [
+        return match ($fieldName) {
             'comments' => $this->commentObjectTypeResolver,
             'commentsForAdmin' => $this->commentObjectTypeResolver,
             'areCommentsOpen' => $this->booleanScalarTypeResolver,
             'hasComments' => $this->booleanScalarTypeResolver,
             'commentCount' => $this->intScalarTypeResolver,
             'commentCountForAdmin' => $this->intScalarTypeResolver,
-        ];
-        return $types[$fieldName] ?? parent::getFieldTypeResolver($fieldName);
+            default => parent::getFieldTypeResolver($fieldName),
+        };
     }
 
     public function getSchemaFieldTypeModifiers(string $fieldName): ?int
@@ -88,15 +88,15 @@ class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInter
 
     public function getSchemaFieldDescription(string $fieldName): ?string
     {
-        $descriptions = [
+        return match ($fieldName) {
             'areCommentsOpen' => $this->translationAPI->__('Are comments open to be added to the custom post', 'pop-comments'),
             'hasComments' => $this->translationAPI->__('Does the custom post have comments?', 'pop-comments'),
             'commentCount' => $this->translationAPI->__('Number of comments added to the custom post', 'pop-comments'),
             'comments' => $this->translationAPI->__('Comments added to the custom post', 'pop-comments'),
             'commentCountForAdmin' => $this->translationAPI->__('[Unrestricted] Number of comments added to the custom post', 'pop-comments'),
             'commentsForAdmin' => $this->translationAPI->__('[Unrestricted] Comments added to the custom post', 'pop-comments'),
-        ];
-        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($fieldName);
+            default => parent::getSchemaFieldDescription($fieldName),
+        };
     }
 
     public function getFieldFilterInputContainerModule(string $fieldName): ?array

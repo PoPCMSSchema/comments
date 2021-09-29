@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PoPSchema\Comments\ModuleProcessors\FormInputs;
 
-use Symfony\Contracts\Service\Attribute\Required;
 use PoP\ComponentModel\FormInputs\FormMultipleInput;
 use PoP\ComponentModel\ModuleProcessors\AbstractFormInputModuleProcessor;
 use PoP\ComponentModel\ModuleProcessors\DataloadQueryArgsFilterInputModuleProcessorInterface;
@@ -17,6 +16,7 @@ use PoPSchema\Comments\Constants\CommentTypes;
 use PoPSchema\Comments\FilterInputProcessors\FilterInputProcessor;
 use PoPSchema\Comments\TypeResolvers\EnumType\CommentStatusEnumTypeResolver;
 use PoPSchema\Comments\TypeResolvers\EnumType\CommentTypeEnumTypeResolver;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class FilterInputModuleProcessor extends AbstractFormInputModuleProcessor implements DataloadQueryArgsFilterInputModuleProcessorInterface, DataloadQueryArgsSchemaFilterInputModuleProcessorInterface
 {
@@ -78,14 +78,14 @@ class FilterInputModuleProcessor extends AbstractFormInputModuleProcessor implem
     public function getName(array $module): string
     {
         // Add a nice name, so that the URL params when filtering make sense
-        $names = array(
+        return match ($module[1]) {
             self::MODULE_FILTERINPUT_CUSTOMPOST_IDS => 'customPostIDs',
             self::MODULE_FILTERINPUT_CUSTOMPOST_ID => 'customPostID',
             self::MODULE_FILTERINPUT_EXCLUDE_CUSTOMPOST_IDS => 'excludeCustomPostIDs',
             self::MODULE_FILTERINPUT_COMMENT_TYPES => 'types',
             self::MODULE_FILTERINPUT_COMMENT_STATUS => 'status',
-        );
-        return $names[$module[1]] ?? parent::getName($module);
+            default => parent::getName($module),
+        };
     }
 
     public function getSchemaFilterInputType(array $module): string

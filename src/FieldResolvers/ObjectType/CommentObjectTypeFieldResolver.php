@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PoPSchema\Comments\FieldResolvers\ObjectType;
 
-use Symfony\Contracts\Service\Attribute\Required;
 use PoP\ComponentModel\FieldResolvers\ObjectType\AbstractQueryableObjectTypeFieldResolver;
 use PoP\ComponentModel\FilterInput\FilterInputHelper;
 use PoP\ComponentModel\Schema\SchemaTypeModifiers;
@@ -30,6 +29,7 @@ use PoPSchema\SchemaCommons\Resolvers\WithLimitFieldArgResolverTrait;
 use PoPSchema\SchemaCommons\TypeResolvers\ScalarType\DateScalarTypeResolver;
 use PoPSchema\SchemaCommons\TypeResolvers\ScalarType\EmailScalarTypeResolver;
 use PoPSchema\SchemaCommons\TypeResolvers\ScalarType\URLScalarTypeResolver;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class CommentObjectTypeFieldResolver extends AbstractQueryableObjectTypeFieldResolver
 {
@@ -158,7 +158,7 @@ class CommentObjectTypeFieldResolver extends AbstractQueryableObjectTypeFieldRes
 
     public function getSchemaFieldDescription(ObjectTypeResolverInterface $objectTypeResolver, string $fieldName): ?string
     {
-        $descriptions = [
+        return match ($fieldName) {
             'content' => $this->translationAPI->__('Comment\'s content', 'pop-comments'),
             'authorName' => $this->translationAPI->__('Comment author\'s name', 'pop-comments'),
             'authorURL' => $this->translationAPI->__('Comment author\'s URL', 'pop-comments'),
@@ -174,8 +174,8 @@ class CommentObjectTypeFieldResolver extends AbstractQueryableObjectTypeFieldRes
             'responseCount' => $this->translationAPI->__('Number of responses to the comment', 'pop-comments'),
             'responsesForAdmin' => $this->translationAPI->__('[Unrestricted] Responses to the comment', 'pop-comments'),
             'responseCountForAdmin' => $this->translationAPI->__('[Unrestricted] Number of responses to the comment', 'pop-comments'),
-        ];
-        return $descriptions[$fieldName] ?? parent::getSchemaFieldDescription($objectTypeResolver, $fieldName);
+            default => parent::getSchemaFieldDescription($objectTypeResolver, $fieldName),
+        };
     }
 
     public function getFieldFilterInputContainerModule(ObjectTypeResolverInterface $objectTypeResolver, string $fieldName): ?array
