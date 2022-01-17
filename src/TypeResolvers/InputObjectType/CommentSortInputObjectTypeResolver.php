@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PoPSchema\Comments\TypeResolvers\InputObjectType;
+namespace PoPCMSSchema\Comments\TypeResolvers\InputObjectType;
 
-use PoPSchema\Comments\Constants\CommentOrderBy;
-use PoPSchema\Comments\TypeResolvers\EnumType\CommentOrderByEnumTypeResolver;
-use PoPSchema\SchemaCommons\TypeResolvers\InputObjectType\SortInputObjectTypeResolver;
+use PoPCMSSchema\Comments\Constants\CommentOrderBy;
+use PoPCMSSchema\Comments\TypeResolvers\EnumType\CommentOrderByEnumTypeResolver;
+use PoPCMSSchema\SchemaCommons\TypeResolvers\InputObjectType\SortInputObjectTypeResolver;
 
 class CommentSortInputObjectTypeResolver extends SortInputObjectTypeResolver
 {
