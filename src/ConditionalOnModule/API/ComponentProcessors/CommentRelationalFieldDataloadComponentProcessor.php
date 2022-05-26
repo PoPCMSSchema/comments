@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace PoPCMSSchema\Comments\ConditionalOnModule\API\ModuleProcessors;
+namespace PoPCMSSchema\Comments\ConditionalOnModule\API\ComponentProcessors;
 
-use PoPAPI\API\ModuleProcessors\AbstractRelationalFieldDataloadModuleProcessor;
+use PoPAPI\API\ComponentProcessors\AbstractRelationalFieldDataloadComponentProcessor;
 use PoP\ComponentModel\QueryInputOutputHandlers\ListQueryInputOutputHandler;
 use PoP\ComponentModel\QueryInputOutputHandlers\QueryInputOutputHandlerInterface;
 use PoP\ComponentModel\TypeResolvers\RelationalTypeResolverInterface;
-use PoPCMSSchema\Comments\ModuleProcessors\CommentFilterInputContainerModuleProcessor;
+use PoPCMSSchema\Comments\ComponentProcessors\CommentFilterInputContainerComponentProcessor;
 use PoPCMSSchema\Comments\TypeResolvers\ObjectType\CommentObjectTypeResolver;
 
-class CommentRelationalFieldDataloadModuleProcessor extends AbstractRelationalFieldDataloadModuleProcessor
+class CommentRelationalFieldDataloadComponentProcessor extends AbstractRelationalFieldDataloadComponentProcessor
 {
-    public final const MODULE_DATALOAD_RELATIONALFIELDS_COMMENTS = 'dataload-relationalfields-comments';
+    public final const COMPONENT_DATALOAD_RELATIONALFIELDS_COMMENTS = 'dataload-relationalfields-comments';
 
     private ?CommentObjectTypeResolver $commentObjectTypeResolver = null;
     private ?ListQueryInputOutputHandler $listQueryInputOutputHandler = null;
@@ -35,40 +35,40 @@ class CommentRelationalFieldDataloadModuleProcessor extends AbstractRelationalFi
         return $this->listQueryInputOutputHandler ??= $this->instanceManager->getInstance(ListQueryInputOutputHandler::class);
     }
 
-    public function getModulesToProcess(): array
+    public function getComponentsToProcess(): array
     {
         return array(
-            [self::class, self::MODULE_DATALOAD_RELATIONALFIELDS_COMMENTS],
+            [self::class, self::COMPONENT_DATALOAD_RELATIONALFIELDS_COMMENTS],
         );
     }
 
-    public function getRelationalTypeResolver(array $module): ?RelationalTypeResolverInterface
+    public function getRelationalTypeResolver(array $component): ?RelationalTypeResolverInterface
     {
-        switch ($module[1]) {
-            case self::MODULE_DATALOAD_RELATIONALFIELDS_COMMENTS:
+        switch ($component[1]) {
+            case self::COMPONENT_DATALOAD_RELATIONALFIELDS_COMMENTS:
                 return $this->getCommentObjectTypeResolver();
         }
 
-        return parent::getRelationalTypeResolver($module);
+        return parent::getRelationalTypeResolver($component);
     }
 
-    public function getQueryInputOutputHandler(array $module): ?QueryInputOutputHandlerInterface
+    public function getQueryInputOutputHandler(array $component): ?QueryInputOutputHandlerInterface
     {
-        switch ($module[1]) {
-            case self::MODULE_DATALOAD_RELATIONALFIELDS_COMMENTS:
+        switch ($component[1]) {
+            case self::COMPONENT_DATALOAD_RELATIONALFIELDS_COMMENTS:
                 return $this->getListQueryInputOutputHandler();
         }
 
-        return parent::getQueryInputOutputHandler($module);
+        return parent::getQueryInputOutputHandler($component);
     }
 
-    public function getFilterSubmodule(array $module): ?array
+    public function getFilterSubcomponent(array $component): ?array
     {
-        switch ($module[1]) {
-            case self::MODULE_DATALOAD_RELATIONALFIELDS_COMMENTS:
-                return [CommentFilterInputContainerModuleProcessor::class, CommentFilterInputContainerModuleProcessor::MODULE_FILTERINPUTCONTAINER_COMMENTS];
+        switch ($component[1]) {
+            case self::COMPONENT_DATALOAD_RELATIONALFIELDS_COMMENTS:
+                return [CommentFilterInputContainerComponentProcessor::class, CommentFilterInputContainerComponentProcessor::COMPONENT_FILTERINPUTCONTAINER_COMMENTS];
         }
 
-        return parent::getFilterSubmodule($module);
+        return parent::getFilterSubcomponent($component);
     }
 }
