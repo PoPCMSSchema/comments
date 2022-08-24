@@ -21,6 +21,7 @@ class CommentTypeDataLoader extends AbstractObjectTypeQueryableDataLoader
     }
     final protected function getCommentTypeAPI(): CommentTypeAPIInterface
     {
+        /** @var CommentTypeAPIInterface */
         return $this->commentTypeAPI ??= $this->instanceManager->getInstance(CommentTypeAPIInterface::class);
     }
 
@@ -46,7 +47,12 @@ class CommentTypeDataLoader extends AbstractObjectTypeQueryableDataLoader
         ];
     }
 
-    public function executeQuery($query, array $options = []): array
+    /**
+     * @return mixed[]
+     * @param array<string,mixed> $query
+     * @param array<string,mixed> $options
+     */
+    public function executeQuery(array $query, array $options = []): array
     {
         return $this->getCommentTypeAPI()->getComments($query, $options);
     }

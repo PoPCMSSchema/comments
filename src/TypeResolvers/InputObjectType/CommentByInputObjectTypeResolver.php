@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoPCMSSchema\Comments\TypeResolvers\InputObjectType;
 
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoP\ComponentModel\FilterInputs\FilterInputInterface;
 use PoP\ComponentModel\TypeResolvers\InputObjectType\AbstractOneofQueryableInputObjectTypeResolver;
 use PoP\ComponentModel\TypeResolvers\ScalarType\IDScalarTypeResolver;
@@ -20,6 +21,7 @@ class CommentByInputObjectTypeResolver extends AbstractOneofQueryableInputObject
     }
     final protected function getIDScalarTypeResolver(): IDScalarTypeResolver
     {
+        /** @var IDScalarTypeResolver */
         return $this->idScalarTypeResolver ??= $this->instanceManager->getInstance(IDScalarTypeResolver::class);
     }
     final public function setIncludeFilterInput(IncludeFilterInput $includeFilterInput): void
@@ -28,6 +30,7 @@ class CommentByInputObjectTypeResolver extends AbstractOneofQueryableInputObject
     }
     final protected function getIncludeFilterInput(): IncludeFilterInput
     {
+        /** @var IncludeFilterInput */
         return $this->includeFilterInput ??= $this->instanceManager->getInstance(IncludeFilterInput::class);
     }
 
@@ -41,6 +44,9 @@ class CommentByInputObjectTypeResolver extends AbstractOneofQueryableInputObject
         return $this->__('Oneof input to specify the property and data to fetch a comment', 'comments');
     }
 
+    /**
+     * @return array<string,InputTypeResolverInterface>
+     */
     public function getInputFieldNameTypeResolvers(): array
     {
         return [

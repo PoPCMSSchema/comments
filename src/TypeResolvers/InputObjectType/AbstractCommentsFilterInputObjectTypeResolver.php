@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PoPCMSSchema\Comments\TypeResolvers\InputObjectType;
 
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoP\ComponentModel\FilterInputs\FilterInputInterface;
 use PoP\ComponentModel\Schema\SchemaTypeModifiers;
 use PoP\ComponentModel\TypeResolvers\ScalarType\StringScalarTypeResolver;
@@ -52,6 +53,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getDateQueryInputObjectTypeResolver(): DateQueryInputObjectTypeResolver
     {
+        /** @var DateQueryInputObjectTypeResolver */
         return $this->dateQueryInputObjectTypeResolver ??= $this->instanceManager->getInstance(DateQueryInputObjectTypeResolver::class);
     }
     final public function setCommentStatusEnumTypeResolver(CommentStatusEnumTypeResolver $commentStatusEnumTypeResolver): void
@@ -60,6 +62,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getCommentStatusEnumTypeResolver(): CommentStatusEnumTypeResolver
     {
+        /** @var CommentStatusEnumTypeResolver */
         return $this->commentStatusEnumTypeResolver ??= $this->instanceManager->getInstance(CommentStatusEnumTypeResolver::class);
     }
     final public function setCommentTypeEnumTypeResolver(CommentTypeEnumTypeResolver $commentTypeEnumTypeResolver): void
@@ -68,6 +71,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getCommentTypeEnumTypeResolver(): CommentTypeEnumTypeResolver
     {
+        /** @var CommentTypeEnumTypeResolver */
         return $this->commentTypeEnumTypeResolver ??= $this->instanceManager->getInstance(CommentTypeEnumTypeResolver::class);
     }
     final public function setCustomPostEnumTypeResolver(CustomPostEnumTypeResolver $customPostEnumTypeResolver): void
@@ -76,6 +80,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getCustomPostEnumTypeResolver(): CustomPostEnumTypeResolver
     {
+        /** @var CustomPostEnumTypeResolver */
         return $this->customPostEnumTypeResolver ??= $this->instanceManager->getInstance(CustomPostEnumTypeResolver::class);
     }
     final public function setStringScalarTypeResolver(StringScalarTypeResolver $stringScalarTypeResolver): void
@@ -84,6 +89,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getStringScalarTypeResolver(): StringScalarTypeResolver
     {
+        /** @var StringScalarTypeResolver */
         return $this->stringScalarTypeResolver ??= $this->instanceManager->getInstance(StringScalarTypeResolver::class);
     }
     final public function setCommentStatusFilterInput(CommentStatusFilterInput $commentStatusFilterInput): void
@@ -92,6 +98,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getCommentStatusFilterInput(): CommentStatusFilterInput
     {
+        /** @var CommentStatusFilterInput */
         return $this->commentStatusFilterInput ??= $this->instanceManager->getInstance(CommentStatusFilterInput::class);
     }
     final public function setCommentTypesFilterInput(CommentTypesFilterInput $commentTypesFilterInput): void
@@ -100,6 +107,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getCommentTypesFilterInput(): CommentTypesFilterInput
     {
+        /** @var CommentTypesFilterInput */
         return $this->commentTypesFilterInput ??= $this->instanceManager->getInstance(CommentTypesFilterInput::class);
     }
     final public function setCustomPostIDFilterInput(CustomPostIDFilterInput $customPostIDFilterInput): void
@@ -108,6 +116,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getCustomPostIDFilterInput(): CustomPostIDFilterInput
     {
+        /** @var CustomPostIDFilterInput */
         return $this->customPostIDFilterInput ??= $this->instanceManager->getInstance(CustomPostIDFilterInput::class);
     }
     final public function setCustomPostIDsFilterInput(CustomPostIDsFilterInput $customPostIDsFilterInput): void
@@ -116,6 +125,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getCustomPostIDsFilterInput(): CustomPostIDsFilterInput
     {
+        /** @var CustomPostIDsFilterInput */
         return $this->customPostIDsFilterInput ??= $this->instanceManager->getInstance(CustomPostIDsFilterInput::class);
     }
     final public function setExcludeCustomPostIDsFilterInput(ExcludeCustomPostIDsFilterInput $excludeCustomPostIDsFilterInput): void
@@ -124,6 +134,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getExcludeCustomPostIDsFilterInput(): ExcludeCustomPostIDsFilterInput
     {
+        /** @var ExcludeCustomPostIDsFilterInput */
         return $this->excludeCustomPostIDsFilterInput ??= $this->instanceManager->getInstance(ExcludeCustomPostIDsFilterInput::class);
     }
     final public function setUnionCustomPostTypesFilterInput(UnionCustomPostTypesFilterInput $unionCustomPostTypesFilterInput): void
@@ -132,6 +143,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getUnionCustomPostTypesFilterInput(): UnionCustomPostTypesFilterInput
     {
+        /** @var UnionCustomPostTypesFilterInput */
         return $this->unionCustomPostTypesFilterInput ??= $this->instanceManager->getInstance(UnionCustomPostTypesFilterInput::class);
     }
     final public function setExcludeParentIDsFilterInput(ExcludeParentIDsFilterInput $excludeParentIDsFilterInput): void
@@ -140,6 +152,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getExcludeParentIDsFilterInput(): ExcludeParentIDsFilterInput
     {
+        /** @var ExcludeParentIDsFilterInput */
         return $this->excludeParentIDsFilterInput ??= $this->instanceManager->getInstance(ExcludeParentIDsFilterInput::class);
     }
     final public function setSearchFilterInput(SearchFilterInput $searchFilterInput): void
@@ -148,6 +161,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getSearchFilterInput(): SearchFilterInput
     {
+        /** @var SearchFilterInput */
         return $this->searchFilterInput ??= $this->instanceManager->getInstance(SearchFilterInput::class);
     }
     final public function setParentIDFilterInput(ParentIDFilterInput $parentIDFilterInput): void
@@ -156,6 +170,7 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getParentIDFilterInput(): ParentIDFilterInput
     {
+        /** @var ParentIDFilterInput */
         return $this->parentIDFilterInput ??= $this->instanceManager->getInstance(ParentIDFilterInput::class);
     }
     final public function setParentIDsFilterInput(ParentIDsFilterInput $parentIDsFilterInput): void
@@ -164,9 +179,13 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     }
     final protected function getParentIDsFilterInput(): ParentIDsFilterInput
     {
+        /** @var ParentIDsFilterInput */
         return $this->parentIDsFilterInput ??= $this->instanceManager->getInstance(ParentIDsFilterInput::class);
     }
 
+    /**
+     * @return string[]
+     */
     public function getAdminInputFieldNames(): array
     {
         $adminInputFieldNames = parent::getAdminInputFieldNames();
@@ -186,6 +205,9 @@ abstract class AbstractCommentsFilterInputObjectTypeResolver extends AbstractObj
     abstract protected function addParentInputFields(): bool;
     abstract protected function addCustomPostInputFields(): bool;
 
+    /**
+     * @return array<string, InputTypeResolverInterface>
+     */
     public function getInputFieldNameTypeResolvers(): array
     {
         return array_merge(

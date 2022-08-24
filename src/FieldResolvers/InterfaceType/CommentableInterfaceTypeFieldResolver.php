@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PoPCMSSchema\Comments\FieldResolvers\InterfaceType;
 
+use PoP\ComponentModel\TypeResolvers\InterfaceType\InterfaceTypeResolverInterface;
+use PoP\ComponentModel\TypeResolvers\InputTypeResolverInterface;
 use PoP\ComponentModel\FieldResolvers\InterfaceType\AbstractQueryableSchemaInterfaceTypeFieldResolver;
 use PoP\ComponentModel\Schema\SchemaTypeModifiers;
 use PoP\ComponentModel\TypeResolvers\ConcreteTypeResolverInterface;
@@ -33,6 +35,7 @@ class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInter
     }
     final protected function getBooleanScalarTypeResolver(): BooleanScalarTypeResolver
     {
+        /** @var BooleanScalarTypeResolver */
         return $this->booleanScalarTypeResolver ??= $this->instanceManager->getInstance(BooleanScalarTypeResolver::class);
     }
     final public function setIntScalarTypeResolver(IntScalarTypeResolver $intScalarTypeResolver): void
@@ -41,6 +44,7 @@ class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInter
     }
     final protected function getIntScalarTypeResolver(): IntScalarTypeResolver
     {
+        /** @var IntScalarTypeResolver */
         return $this->intScalarTypeResolver ??= $this->instanceManager->getInstance(IntScalarTypeResolver::class);
     }
     final public function setCommentObjectTypeResolver(CommentObjectTypeResolver $commentObjectTypeResolver): void
@@ -49,6 +53,7 @@ class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInter
     }
     final protected function getCommentObjectTypeResolver(): CommentObjectTypeResolver
     {
+        /** @var CommentObjectTypeResolver */
         return $this->commentObjectTypeResolver ??= $this->instanceManager->getInstance(CommentObjectTypeResolver::class);
     }
     final public function setCustomPostCommentsFilterInputObjectTypeResolver(CustomPostCommentsFilterInputObjectTypeResolver $customPostCommentsFilterInputObjectTypeResolver): void
@@ -57,6 +62,7 @@ class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInter
     }
     final protected function getCustomPostCommentsFilterInputObjectTypeResolver(): CustomPostCommentsFilterInputObjectTypeResolver
     {
+        /** @var CustomPostCommentsFilterInputObjectTypeResolver */
         return $this->customPostCommentsFilterInputObjectTypeResolver ??= $this->instanceManager->getInstance(CustomPostCommentsFilterInputObjectTypeResolver::class);
     }
     final public function setCustomPostCommentPaginationInputObjectTypeResolver(CustomPostCommentPaginationInputObjectTypeResolver $customPostCommentPaginationInputObjectTypeResolver): void
@@ -65,6 +71,7 @@ class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInter
     }
     final protected function getCustomPostCommentPaginationInputObjectTypeResolver(): CustomPostCommentPaginationInputObjectTypeResolver
     {
+        /** @var CustomPostCommentPaginationInputObjectTypeResolver */
         return $this->customPostCommentPaginationInputObjectTypeResolver ??= $this->instanceManager->getInstance(CustomPostCommentPaginationInputObjectTypeResolver::class);
     }
     final public function setCommentSortInputObjectTypeResolver(CommentSortInputObjectTypeResolver $commentSortInputObjectTypeResolver): void
@@ -73,9 +80,13 @@ class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInter
     }
     final protected function getCommentSortInputObjectTypeResolver(): CommentSortInputObjectTypeResolver
     {
+        /** @var CommentSortInputObjectTypeResolver */
         return $this->commentSortInputObjectTypeResolver ??= $this->instanceManager->getInstance(CommentSortInputObjectTypeResolver::class);
     }
 
+    /**
+     * @return array<class-string<InterfaceTypeResolverInterface>>
+     */
     public function getInterfaceTypeResolverClassesToAttachTo(): array
     {
         return [
@@ -83,6 +94,9 @@ class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInter
         ];
     }
 
+    /**
+     * @return string[]
+     */
     public function getFieldNamesToImplement(): array
     {
         return [
@@ -129,6 +143,9 @@ class CommentableInterfaceTypeFieldResolver extends AbstractQueryableSchemaInter
         };
     }
 
+    /**
+     * @return array<string,InputTypeResolverInterface>
+     */
     public function getFieldArgNameTypeResolvers(string $fieldName): array
     {
         $fieldArgNameTypeResolvers = parent::getFieldArgNameTypeResolvers($fieldName);
