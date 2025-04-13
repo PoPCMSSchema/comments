@@ -390,7 +390,7 @@ class CommentObjectTypeFieldResolver extends AbstractQueryableObjectTypeFieldRes
 
             case 'customPost':
             case 'customPostID':
-                return $this->getCommentTypeAPI()->getCommentCustomPostID($comment);
+                return $this->getCommentTypeAPI()->getCommentPostID($comment);
 
             case 'approved':
                 return $this->getCommentTypeAPI()->isCommentApproved($comment);
